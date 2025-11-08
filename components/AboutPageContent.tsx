@@ -24,7 +24,7 @@ export default function AboutPageContent({ profile, education }: AboutPageConten
           <h2 className="text-2xl font-semibold text-text mb-4">Background</h2>
           {/* <p className="text-text-subtle leading-relaxed mb-4">{profile.summary}</p> */}
           <p className="text-text-subtle leading-relaxed">
-          I'm a KTH graduate originally from the Netherlands, with a master's in Distributed Systems and Data Processing. During my studies, I interned at RISE and contributed to ongoing research now turning into a paper. I have around two to three years of experience, and currently I'm working as a full-stack developer at Spaux, building a multi-tenant self-service portal in Laravel from the ground up.
+          I&apos;m a KTH graduate originally from the Netherlands, with a master&apos;s in Distributed Systems and Data Processing. During my studies, I interned at RISE and contributed to ongoing research now turning into a paper. I have around two to three years of experience, and currently I&apos;m working as a full-stack developer at Spaux, building a multi-tenant self-service portal in Laravel from the ground up.
           </p>
         </ClayCard>
 
@@ -47,13 +47,13 @@ export default function AboutPageContent({ profile, education }: AboutPageConten
             <li className="flex items-start">
               <span className="text-primary mr-2">•</span>
               <span>
-                <strong className="text-text">Full-Stack Enthusiast:</strong> I'm not limited to just frontend or backend. I love being involved in every stage of development. From designing UIs to optimizing large-scale data systems.
+                <strong className="text-text">Full-Stack Enthusiast:</strong> I&apos;m not limited to just frontend or backend. I love being involved in every stage of development. From designing UIs to optimizing large-scale data systems.
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-primary mr-2">•</span>
               <span>
-                <strong className="text-text">Practical Innovation:</strong> I enjoy translating technical requirements to real-world applications that people actually enjoy to use. For me, it's all about adding real value through thoughtful design and reliable engineering.
+                <strong className="text-text">Practical Innovation:</strong> I enjoy translating technical requirements to real-world applications that people actually enjoy to use. For me, it&apos;s all about adding real value through thoughtful design and reliable engineering.
               </span>
             </li>
           </ul>
