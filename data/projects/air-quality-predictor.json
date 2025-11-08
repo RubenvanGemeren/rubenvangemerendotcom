@@ -1,0 +1,13 @@
+{
+  "slug": "air-quality-predictor",
+  "title": "ML Pipeline for weather forecasting",
+  "subtitle": "Automated weather forecasting pipeline for PM2.5 levels in Rotterdam",
+  "tags": ["Machine Learning", "Feature Engineering", "Pipeline"],
+  "challenge": "Automating the creation and updating of a ML prerdictor model based on sensor data for predicting PM2.5 levels in Rotterdam.",
+  "approach": "Creating a pipeline that creates features from sensor data and trains a regression model using PyTorch, which is updated every day to predict the next weeks's PM2.5 levels.",
+  "impact": "Create a webpage that displays the predicted PM2.5 levels in Rotterdam, with a live update every day.",
+  "techStack": ["Python", "PyTorch", "Hopsworks"],
+  "featured": true,
+  "order": 2
+}
+

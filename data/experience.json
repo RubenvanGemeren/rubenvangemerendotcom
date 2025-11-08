@@ -1,0 +1,69 @@
+[
+  {
+    "company": "Spuax",
+    "role": "Full Stack Developer",
+    "location": "Rotterdam, The Netherlands",
+    "startDate": "2025-09",
+    "current": true,
+    "highlights": [
+      "Contributing as a Full Stack Developer to an in-house multitenant SaaS web application built with Laravel, TypeScript, and Vue.js",
+      "Implemented new submission types and features, improving functionality and user workflows",
+      "Collaborating with the team on design, implementation, and testing to ensure high-quality development",
+      "Working with a cloud-based microservice architecture using Docker, N8N, RabbitMQ, and Hookdeck webhooks",
+      "Supporting integration with major telecom providers like KPN and Odido for automated data synchronization",
+      "Assisting in project management and team coordination to track progress and align development goals"
+    ],
+    "tech": ["Laravel", "TypeScript", "Vue.js", "Docker", "N8N", "RabbitMQ", "Hookdeck"]
+  },
+  {
+    "company": "RISE Research Institutes of Sweden",
+    "role": "Intern Software Engineer for Distributed Systems and Data Processing",
+    "location": "Stockholm, Sweden",
+    "startDate": "2025-02",
+    "endDate": "2025-07",
+    "current": false,
+    "highlights": [
+      "Researched and addressed bottlenecks in global aggregations for large-scale stream processing systems",
+      "Designed and implemented a decentralized shared state using Conflict-Free Replicated Data Types (CRDTs) to eliminate coordination overhead",
+      "Developed a windowed CRDT model supporting exactly-once processing semantics and flexible custom queries",
+      "Evaluated system performance against Apache Flink using the Nexmark benchmark, demonstrating low latency and high scalability",
+      "Showcased how CRDT-based state management can improve throughput and consistency in decentralized stream processing"
+    ],
+    "tech": ["Scala", "Kafka", "Kubernetes", "CRDTs", "Flink"]
+  },
+  {
+    "company": "Spaux formerly known as Helmink",
+    "role": "Junior Software Developer",
+    "location": "Ridderkerk, The Netherlands",
+    "startDate": "2022-02",
+    "endDate": "2023-07",
+    "current": false,
+    "highlights": [
+      "Worked as a Junior Software Developer and Scrum Master on in-house CRM/ERP and integration platform projects",
+      "Developed microservices for real-time public transport tracking",
+      "Collaborated with project managers to define and manage realistic development milestones",
+      "Led version control and agile process improvements across the organization",
+      "Researched and introduced new technologies to enhance project efficiency and scalability",
+      "Designed intuitive UIs to improve user experience",
+      "Contributed to the architecture design of a new SaaS application in IT communications"
+    ],
+    "tech": ["Laravel", "Pub-Sub", "MySQL", "Vue.js"]
+  },
+  {
+    "company": "Sultan CRM",
+    "role": "Junior Software Developer",
+    "location": "Dordrecht, The Netherlands",
+    "startDate": "2020-09",
+    "endDate": "2021-09",
+    "current": false,
+    "highlights": [
+      "ICT Intern at Sultan CRM. I have worked with Devexpress, Blazor and XPO",
+      "Upgraded and modernized legacy .NET codebases to current development standards",
+      "Enhanced application functionality and optimized existing system components",
+      "Contributed to database design and development for improved data handling",
+      "Collaborated with the team to refine workflows and implement best engineering practices"
+    ],
+    "tech": [".NET", "Devexpress", "Blazor", "XPO", "Microsoft SQL Server"]
+  }
+]
+

@@ -1,0 +1,23 @@
+{
+  "slug": "holon-streaming",
+  "title": "Stream Processing with Windowed CRDTs",
+  "subtitle": "Create decentralized stream processing system that scales globally with Windowed CRDTs",
+  "tags": ["Distributed Systems", "Streaming", "CRDTs"],
+  "challenge": "Traditional stream processing systems require statically defined coordination, which becomes a bottleneck as data scales. This limits scalability and limits the ability to process data in real-time.",
+  "approach": "Creating a decentralized system using Windowed CRDTs as the underlying data structure, utilizing strong eventual consistency to achieve a high throughput and low latency, with fully decentralized recovery.",
+  "impact": "Reduced latency by 3.8x and increased throughput by 11x and 5x failure recovery compared to state of the art systems.",
+  "techStack": ["Scala", "Kafka", "Kubernetes", "Google Cloud"],
+  "metrics": {
+    "label": "Latency (ms)",
+    "before": 4890,
+    "after": 1280,
+    "unit": "ms"
+  },
+  "chartData": [
+    { "label": "Holon", "value": 1280 },
+    { "label": "Flink", "value": 4890 }
+  ],
+  "featured": true,
+  "order": 1
+}
+

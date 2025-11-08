@@ -1,0 +1,17 @@
+[
+  {
+    "institution": "KTH Royal Institute of Technology",
+    "degree": "M.S. Software Engineering",
+    "startDate": "2023-09",
+    "endDate": "2025-09",
+    "details": "Studied distributed computing, AI, and security at KTH, later developing automated ML pipelines and co-designing a decentralized stream-processing platform using CRDTs with KTH DSL and RISE."
+  },
+  {
+    "institution": "University of applied sciences Rotterdam",
+    "degree": "B.S. Information Technology",
+    "startDate": "2018-09",
+    "endDate": "2022-09",
+    "details": "Collaborated with TNO, SIMCEN, and Sogeti on innovative tech projects—including a VR app for claustrophobia—gaining experience across multiple languages and completing nine industry projects with an average grade of 8."
+  }
+]
+
