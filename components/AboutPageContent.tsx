@@ -14,7 +14,7 @@ export default function AboutPageContent({ profile, education }: AboutPageConten
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
       className="max-w-4xl"
     >
       <h1 className="text-4xl font-bold text-text mb-8">About</h1>

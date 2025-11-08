@@ -6,8 +6,8 @@ import { theme } from "@/config/theme";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Senior Software Engineer - Distributed Systems & Data Platforms",
-  description: "Portfolio of a senior software engineer specializing in distributed systems, large-scale data processing, and cloud infrastructure.",
+  title: "Ruben van Gemeren - Software Engineer",
+  description: "Portfolio of a software engineer specializing in distributed systems, large-scale data processing.",
 };
 
 export default function RootLayout({

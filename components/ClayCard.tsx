@@ -18,7 +18,7 @@ export default function ClayCard({ children, className = "", hover = true }: Cla
         ${className}
       `}
       whileHover={hover ? { y: -2 } : undefined}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.15 }}
     >
       {children}
     </motion.div>

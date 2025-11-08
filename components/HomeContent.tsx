@@ -31,7 +31,7 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
         className="mb-12"
       >
         <h1 className="text-4xl lg:text-5xl font-bold text-text mb-4">{profile.name}</h1>
@@ -42,7 +42,7 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.3, delay: 0.05 }}
         className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
       >
         {highlights.map((highlight, index) => (
@@ -57,7 +57,7 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <h2 className="text-2xl font-semibold text-text mb-6">Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
