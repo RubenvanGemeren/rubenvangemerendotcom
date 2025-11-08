@@ -4,8 +4,8 @@
   "subtitle": "Display real-time public transport on boats driving in Rotterdam",
   "tags": ["Real-time", "Public Transport", "Embedded Systems"],
   "challenge": "Processing and displaying real-time public transport data on boats based on live location data.",
-  "approach": "Creating a server tracking multiple vehicles using pulic timetable data and live location data from open data sources, and creating a embedded page for display on boats.",
-  "impact": "Giving passengers up to date infortion about their journey, on multple screens, with arrival time estimates and live updates.",
+  "approach": "Creating a server tracking multiple vehicles using public timetable data and live location data from open data sources, and creating a embedded page for display on boats.",
+  "impact": "Giving passengers up to date information about their journey, on multiple screens, with arrival time estimates and live updates.",
   "techStack": ["Laravel", "Pub-Sub", "NeTEx"],
   "featured": true,
   "order": 3
