@@ -27,19 +27,19 @@ export const greenTheme = {
   },
 
   colors: {
-    primary: "#059669",      // Emerald-600 (darker green)
-    secondary: "#7c3aed",     // Purple (complementary to green)
-    accent: "#f97316",       // Orange (complementary to green)
-    background: "#ecfdf5",   // Emerald-50 (light green tint)
+    primary: "#2d7a4f",      // Darker green
+    secondary: "#4a90e2",    // Blue (complementary)
+    accent: "#f97316",       // Orange (complementary)
+    background: "#f0fdf4",   // Green-50 (light green tint)
     surface: "#ffffff",
     text: {
-      primary: "#022c22",    // Emerald-950 (very dark green)
-      secondary: "#065f46",  // Emerald-800 (dark green)
-      subtle: "#047857",     // Emerald-700
+      primary: "#1f2937",    // Gray tint
+      secondary: "#6b7280",  // Gray-500
+      subtle: "#9ca3af",     // Gray-400
     },
     border: {
-      default: "rgba(5, 150, 105, 0.2)", // Emerald-600 with opacity
-      strong: "rgba(5, 150, 105, 0.4)",
+      default: "rgba(45, 122, 79, 0.2)", // Darker green with opacity
+      strong: "rgba(45, 122, 79, 0.4)",
     },
   },
 
@@ -65,8 +65,8 @@ export const greenTheme = {
 
   components: {
     header: {
-      background: "rgba(236, 253, 245, 0.8)", // background with opacity
-      borderColor: "rgba(5, 150, 105, 0.2)",
+      background: "rgba(240, 253, 244, 0.8)", // background with opacity (light green)
+      borderColor: "rgba(45, 122, 79, 0.2)",
       backdropBlur: true,
       sticky: true,
       height: "4rem",
@@ -85,8 +85,8 @@ export const greenTheme = {
     },
 
     tag: {
-      background: "rgba(5, 150, 105, 0.1)", // primary/10
-      textColor: "#059669", // primary
+      background: "rgba(45, 122, 79, 0.1)", // primary/10
+      textColor: "#2d7a4f", // primary
       borderRadius: "9999px",
       padding: {
         x: "0.625rem",
@@ -105,23 +105,23 @@ export const greenTheme = {
       fontSize: "0.875rem",
       fontWeight: 500,
       active: {
-        background: "rgba(5, 150, 105, 0.1)", // primary/10
-        textColor: "#059669", // primary
+        background: "rgba(45, 122, 79, 0.1)", // primary/10
+        textColor: "#2d7a4f", // primary
       },
       inactive: {
-        textColor: "#065f46", // text.secondary
+        textColor: "#6b7280", // text.secondary
         hoverBackground: "#ffffff", // surface
-        hoverTextColor: "#022c22", // text.primary
+        hoverTextColor: "#1f2937", // text.primary
       },
     },
 
     chart: {
-      colors: ["#059669", "#7c3aed", "#f97316", "#a855f7", "#f59e0b"], // Darker green, purple, orange, purple variant, amber
-      axisColor: "#065f46", // text.secondary
+      colors: ["#2d7a4f", "#4a90e2", "#f97316", "#7c3aed", "#10b981"], // Darker green, blue, orange, purple, emerald
+      axisColor: "#6b7280", // text.secondary
       axisFontSize: "0.75rem",
       tooltip: {
         background: "#ffffff", // surface
-        borderColor: "#ecfdf5", // background
+        borderColor: "#f0fdf4", // background (light green)
         borderRadius: "0.5rem",
         fontSize: "0.75rem",
       },
@@ -129,15 +129,15 @@ export const greenTheme = {
     },
 
     footer: {
-      borderColor: "rgba(5, 150, 105, 0.2)",
-      textColor: "#065f46", // text.secondary
-      linkHoverColor: "#059669", // primary
+      borderColor: "rgba(45, 122, 79, 0.2)",
+      textColor: "#6b7280", // text.secondary
+      linkHoverColor: "#2d7a4f", // primary
     },
 
     themeSelector: {
       background: "#ffffff", // surface
-      textColor: "#022c22", // text.primary
-      borderColor: "rgba(5, 150, 105, 0.2)", // border.default
+      textColor: "#1f2937", // text.primary
+      borderColor: "rgba(45, 122, 79, 0.2)", // border.default
       borderRadius: "0.5rem", // button
       padding: {
         x: "0.75rem", // 12px
@@ -146,18 +146,18 @@ export const greenTheme = {
       fontSize: "0.875rem", // sm
       fontWeight: 500, // medium
       fontFamily: "Inter, system-ui, -apple-system, sans-serif",
-      arrowColor: "#065f46", // text.secondary
+      arrowColor: "#6b7280", // text.secondary
       hover: {
-        borderColor: "#059669", // primary
+        borderColor: "#2d7a4f", // primary
       },
       focus: {
-        borderColor: "#059669", // primary
-        ringColor: "rgba(5, 150, 105, 0.2)", // primary/20
+        borderColor: "#2d7a4f", // primary
+        ringColor: "rgba(45, 122, 79, 0.2)", // primary/20
       },
       option: {
         background: "#ffffff", // surface
-        textColor: "#022c22", // text.primary
-        hoverBackground: "rgba(5, 150, 105, 0.1)", // primary/10
+        textColor: "#1f2937", // text.primary
+        hoverBackground: "rgba(45, 122, 79, 0.1)", // primary/10
       },
     },
 
@@ -166,29 +166,29 @@ export const greenTheme = {
         fontSize: "2.25rem",
         fontWeight: 700,
         lineHeight: 1.2,
-        color: "#022c22", // text.primary
+        color: "#1f2937", // text.primary (same as default)
       },
       h2: {
         fontSize: "1.875rem",
         fontWeight: 600,
         lineHeight: 1.3,
-        color: "#022c22", // text.primary
+        color: "#1f2937", // text.primary (same as default)
       },
       h3: {
         fontSize: "1.5rem",
         fontWeight: 600,
         lineHeight: 1.4,
-        color: "#022c22", // text.primary
+        color: "#1f2937", // text.primary (same as default)
       },
       body: {
         fontSize: "1rem",
         lineHeight: 1.6,
-        color: "#022c22", // text.primary
+        color: "#1f2937", // text.primary (same as default)
       },
       bodySecondary: {
         fontSize: "0.875rem",
         lineHeight: 1.5,
-        color: "#065f46", // text.secondary
+        color: "#6b7280", // text.secondary (same as default)
       },
     },
   },
