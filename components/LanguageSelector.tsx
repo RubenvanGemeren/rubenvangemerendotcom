@@ -1,20 +1,25 @@
 "use client";
 
-import { useTheme } from "@/lib/theme-context";
-import { themes } from "@/config/themes";
 import { useI18n } from "@/lib/i18n-context";
+import { useTheme } from "@/lib/theme-context";
+import { availableLocales, type Locale } from "@/locales";
 
-export default function ThemeSelector() {
-  const { themeName, setTheme, availableThemes, theme } = useTheme();
-  const { t } = useI18n();
+const localeNames: Record<Locale, string> = {
+  "en-EN": "English",
+  "nl-NL": "Nederlands",
+};
+
+export default function LanguageSelector() {
+  const { locale, setLocale, availableLocales: available, t } = useI18n();
+  const { theme } = useTheme();
   const selector = theme.components.themeSelector;
 
   return (
     <div className="relative">
       <select
-        value={themeName}
-        onChange={(e) => setTheme(e.target.value)}
-        className="theme-selector appearance-none cursor-pointer transition-colors focus:outline-none"
+        value={locale}
+        onChange={(e) => setLocale(e.target.value as Locale)}
+        className="language-selector appearance-none cursor-pointer transition-colors focus:outline-none"
         style={{
           backgroundColor: selector.background,
           color: selector.textColor,
@@ -30,18 +35,18 @@ export default function ThemeSelector() {
           borderWidth: "1px",
           borderStyle: "solid",
         }}
-        aria-label={t("common.ariaLabels.selectTheme")}
+        aria-label={t("common.ariaLabels.selectLanguage")}
       >
-        {availableThemes.map((name) => (
+        {available.map((loc) => (
           <option
-            key={name}
-            value={name}
+            key={loc}
+            value={loc}
             style={{
               backgroundColor: selector.option.background,
               color: selector.option.textColor,
             }}
           >
-            {themes[name as keyof typeof themes].displayName}
+            {localeNames[loc]}
           </option>
         ))}
       </select>
@@ -68,25 +73,25 @@ export default function ThemeSelector() {
       </div>
       <style dangerouslySetInnerHTML={{
         __html: `
-          .theme-selector {
+          .language-selector {
             background-color: ${selector.background} !important;
             color: ${selector.textColor} !important;
             border-color: ${selector.borderColor} !important;
           }
-          .theme-selector:hover {
+          .language-selector:hover {
             border-color: ${selector.hover.borderColor} !important;
           }
-          .theme-selector:focus {
+          .language-selector:focus {
             border-color: ${selector.focus.borderColor} !important;
             box-shadow: 0 0 0 2px ${selector.focus.ringColor} !important;
           }
-          .theme-selector option {
+          .language-selector option {
             background-color: ${selector.option.background} !important;
             color: ${selector.option.textColor} !important;
             font-family: ${selector.fontFamily} !important;
           }
-          .theme-selector option:hover,
-          .theme-selector option:checked {
+          .language-selector option:hover,
+          .language-selector option:checked {
             background-color: ${selector.option.hoverBackground} !important;
           }
         `

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ClayCard from "./ClayCard";
 import ProjectCard from "./ProjectCard";
 import type { Profile, Project } from "@/types/content";
+import { useI18n } from "@/lib/i18n-context";
 
 interface HomeContentProps {
   profile: Profile;
@@ -11,18 +12,20 @@ interface HomeContentProps {
 }
 
 export default function HomeContent({ profile, featuredProjects }: HomeContentProps) {
+  const { t } = useI18n();
+
   const highlights = [
     {
-      title: "Distributed Stream Processing with CRDTs",
-      description: "Developed Holon Streaming, a decentralized stream processing system that scales global aggregations using Windowed CRDTs to remove coordination bottlenecks.",
+      title: t("pages.home.highlights.highlight1.title"),
+      description: t("pages.home.highlights.highlight1.description"),
     },
     {
-      title: "ML Pipelines for weather forecasting & FPL predictions",
-      description: "Developed ML systems with Hopsworks: a serverless air-quality predictor for PM2.5 levels and an FPL player performance model using Python and PyTorch for weekly point forecasts.",
+      title: t("pages.home.highlights.highlight2.title"),
+      description: t("pages.home.highlights.highlight2.description"),
     },
     {
-      title: "Real-time public transport tracking",
-      description: "Developed a real-time public transport tracking system using European NeTEx format for boats in Rotterdam.",
+      title: t("pages.home.highlights.highlight3.title"),
+      description: t("pages.home.highlights.highlight3.description"),
     },
   ];
 
@@ -34,9 +37,9 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
         transition={{ duration: 0.3 }}
         className="mb-12"
       >
-        <h1 className="text-4xl lg:text-5xl font-bold text-text mb-4">{profile.name}</h1>
-        <h2 className="text-2xl lg:text-3xl font-semibold text-primary mb-6">{profile.title}</h2>
-        <p className="text-lg text-text-subtle max-w-3xl leading-relaxed">{profile.summary}</p>
+        <h1 className="text-4xl lg:text-5xl font-bold text-text mb-4">{t("common.name")}</h1>
+        <h2 className="text-2xl lg:text-3xl font-semibold text-primary mb-6">{t("common.title")}</h2>
+        <p className="text-lg text-text-subtle max-w-3xl leading-relaxed">{t("common.summary")}</p>
       </motion.div>
 
       <motion.div
@@ -59,7 +62,7 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
-          <h2 className="text-2xl font-semibold text-text mb-6">Featured Projects</h2>
+          <h2 className="text-2xl font-semibold text-text mb-6">{t("pages.home.featuredProjects")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} compact />

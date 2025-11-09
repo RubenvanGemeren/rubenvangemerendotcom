@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import ClayCard from "./ClayCard";
 import Tag from "./Tag";
 import MetricChart from "./MetricChart";
 import type { Project } from "@/types/content";
+import { useI18n } from "@/lib/i18n-context";
+import { useTranslatedProject } from "@/lib/use-translated-data";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,19 +14,22 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, compact = false }: ProjectCardProps) {
+  const { t } = useI18n();
+  const translatedProject = useTranslatedProject(project);
+
   return (
     <Link href={`/projects/${project.slug}`}>
       <ClayCard className="p-6 h-full cursor-pointer">
         <div className="flex flex-col h-full">
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-text mb-1">{project.title}</h3>
-              <p className="text-sm text-text-subtle">{project.subtitle}</p>
+              <h3 className="text-lg font-semibold text-text mb-1">{translatedProject.title}</h3>
+              <p className="text-sm text-text-subtle">{translatedProject.subtitle}</p>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.slice(0, 3).map((tag) => (
+            {translatedProject.tags.slice(0, 3).map((tag) => (
               <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
@@ -31,18 +38,18 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
             <>
               <ul className="space-y-2 mb-4 flex-1">
                 <li className="text-sm text-text-subtle">
-                  <span className="font-medium text-text">Challenge: </span>
-                  {project.challenge}
+                  <span className="font-medium text-text">{t("components.projectCard.challenge")}: </span>
+                  {translatedProject.challenge}
                 </li>
                 <li className="text-sm text-text-subtle">
-                  <span className="font-medium text-text">Impact: </span>
-                  {project.impact}
+                  <span className="font-medium text-text">{t("components.projectCard.impact")}: </span>
+                  {translatedProject.impact}
                 </li>
               </ul>
 
-              {project.chartData && project.chartData.length > 0 && (
+              {translatedProject.chartData && translatedProject.chartData.length > 0 && (
                 <div className="mt-4">
-                  <MetricChart data={project.chartData} height={150} />
+                  <MetricChart data={translatedProject.chartData} height={150} />
                 </div>
               )}
             </>
@@ -50,7 +57,7 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
 
           {compact && (
             <div className="mt-auto pt-4">
-              <p className="text-sm text-text-subtle line-clamp-2">{project.impact}</p>
+              <p className="text-sm text-text-subtle line-clamp-2">{translatedProject.impact}</p>
             </div>
           )}
         </div>

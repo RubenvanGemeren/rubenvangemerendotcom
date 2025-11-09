@@ -1,15 +1,22 @@
-import { getProfile } from "@/lib/content";
-import Link from "next/link";
+"use client";
 
-export default function Footer() {
-  const profile = getProfile();
+import Link from "next/link";
+import { useI18n } from "@/lib/i18n-context";
+import type { Profile } from "@/types/content";
+
+interface FooterProps {
+  profile: Profile;
+}
+
+export default function Footer({ profile }: FooterProps) {
+  const { t } = useI18n();
 
   return (
     <footer className="border-t border-surface/50 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-text-subtle">
-            © {new Date().getFullYear()} {profile.name}
+            © {new Date().getFullYear()} {t("common.name")}
           </p>
           <div className="flex items-center space-x-6">
             {profile.links.github && (
@@ -19,7 +26,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-sm text-text-subtle hover:text-primary transition-colors"
               >
-                GitHub
+                {t("common.links.github")}
               </Link>
             )}
             {profile.links.linkedin && (
@@ -29,7 +36,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-sm text-text-subtle hover:text-primary transition-colors"
               >
-                LinkedIn
+                {t("common.links.linkedin")}
               </Link>
             )}
             {profile.links.email && (
@@ -37,7 +44,7 @@ export default function Footer() {
                 href={`mailto:${profile.links.email}`}
                 className="text-sm text-text-subtle hover:text-primary transition-colors"
               >
-                Email
+                {t("common.links.email")}
               </Link>
             )}
           </div>

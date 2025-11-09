@@ -1,0 +1,210 @@
+export const nlNL = {
+  common: {
+    name: "Ruben van Gemeren",
+    title: "Full Stack Developer",
+    summary: "Recent afgestudeerde van KTH Royal Institute of Technology in Stockholm, Zweden. Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking. Momenteel werkend als Full Stack Developer bij Spaux.",
+    nav: {
+      home: "Home",
+      projects: "Projecten",
+      experience: "Ervaring",
+      about: "Over",
+    },
+    links: {
+      github: "GitHub",
+      linkedin: "LinkedIn",
+      email: "E-mail",
+    },
+    present: "Heden",
+    ariaLabels: {
+      selectLanguage: "Selecteer taal",
+      selectTheme: "Selecteer thema",
+    },
+    notFound: {
+      title: "404",
+      message: "Pagina niet gevonden",
+      goHome: "Ga naar Home",
+    },
+    metadata: {
+      title: "Ruben van Gemeren - Software Engineer",
+      description: "Portfolio van een software engineer gespecialiseerd in gedistribueerde systemen en grootschalige gegevensverwerking.",
+    },
+  },
+  pages: {
+    home: {
+      featuredProjects: "Uitgelichte Projecten",
+      highlights: {
+        highlight1: {
+          title: "Gedistribueerde Streamverwerking met CRDTs",
+          description: "Holon Streaming ontwikkeld, een gedecentraliseerd stream processing systeem dat globale aggregaties schaalt met behulp van Windowed CRDTs om coördinatie bottlenecks te elimineren.",
+        },
+        highlight2: {
+          title: "ML Pipelines voor weersvoorspelling & FPL voorspellingen",
+          description: "Ontwikkeld ML-systemen met Hopsworks: een serverloze luchtkwaliteitsvoorspeller voor PM2.5-niveaus en een FPL-spelerprestatiemodel met Python en PyTorch voor wekelijkse voorspellingen.",
+        },
+        highlight3: {
+          title: "Real-time openbaar vervoer tracking",
+          description: "Een real-time openbaar vervoer trackingsysteem ontwikkeld met behulp van het Europese NeTEx-formaat voor boten in Rotterdam.",
+        },
+      },
+    },
+    about: {
+      title: "Over",
+      background: {
+        title: "Achtergrond",
+        description: "Ik ben een Nederlandse software engineer gespecialiseerd in gedistribueerde systemen en grootschalige gegevensverwerking. Ik heb mijn master Distributed Systems and Data Processing behaald aan de KTH Royal Institute of Technology. Tijdens mijn studie liep ik stage bij RISE, waar ik meewerkte aan een onderzoeksproject dat nu wordt verwerkt in een publicatie. Inmiddels heb ik ongeveer twee tot drie jaar werkervaring en werk ik als full-stack ontwikkelaar bij Spaux. Daar bouw ik een multi-tenant self-service portaal in Laravel vanaf de grond op.",
+      },
+      values: {
+        title: "Waarden & Aanpak",
+        handsOn: {
+          label: "Hands-on Engineering:",
+          text: "Ik geloof in het echt begrijpen van de code die ik schrijf. Mijn beste werk komt voort uit het vuile handen krijgen en duiken in de implementatiedetails.",
+        },
+        functionOverForm: {
+          label: "Functionaliteit boven Vorm:",
+          text: "Schone code is belangrijk, maar over-optimaliseren van de codebase kan de voortgang vertragen en de productkwaliteit schaden. De echte prioriteit is het leveren van nieuwe, goed functionerende functies, schone oplossingen volgen van nature wanneer ze met intentie en verantwoordelijkheid worden gebouwd.",
+        },
+        fullStack: {
+          label: "Full-Stack Enthousiast:",
+          text: "Ik ben niet beperkt tot alleen frontend of backend. Ik hou ervan betrokken te zijn bij elke fase van ontwikkeling. Van het ontwerpen van UI's tot het optimaliseren van grootschalige datasystemen.",
+        },
+        practicalInnovation: {
+          label: "Praktische Innovatie:",
+          text: "Ik geniet ervan technische vereisten te vertalen naar real-world applicaties die mensen daadwerkelijk prettig vinden om te gebruiken. Voor mij gaat het allemaal om het toevoegen van echte waarde door doordacht ontwerp en betrouwbare engineering.",
+        },
+      },
+      education: {
+        title: "Opleiding",
+      },
+    },
+    projects: {
+      title: "Projecten",
+      description: "Een selectie van projecten gericht op gedistribueerde systemen, dataplatforms en infrastructuur.",
+    },
+    experience: {
+      title: "Ervaring",
+      description: "Bouwen aan schaalbare, betrouwbare systemen en dataplatforms op schaal.",
+    },
+  },
+  data: {
+    projects: {
+      "holon-streaming": {
+        title: "Streamverwerking met Windowed CRDTs",
+        subtitle: "Creëer een gedecentraliseerd streamverwerkingssysteem dat globaal schaalt met Windowed CRDTs",
+        tags: ["Gedistribueerde Systemen", "Streaming", "CRDTs"],
+        challenge: "Traditionele streamverwerkingssystemen vereisen statisch gedefinieerde coördinatie, wat een knelpunt wordt naarmate data schaalt. Dit beperkt de schaalbaarheid en beperkt het vermogen om data in real-time te verwerken.",
+        approach: "Creëren van een gedecentraliseerd systeem met Windowed CRDTs als onderliggende datastructuur, gebruikmakend van sterke eventual consistency om een hoge doorvoer en lage latentie te bereiken, met volledig gedecentraliseerd herstel.",
+        impact: "Verminderde latentie met 3.8x en verhoogde doorvoer met 11x en 5x foutherstel vergeleken met state-of-the-art systemen.",
+        metrics: {
+          label: "Latentie (ms)",
+        },
+      },
+      "air-quality-predictor": {
+        title: "ML Pipeline voor weersvoorspelling",
+        subtitle: "Geautomatiseerde weersvoorspellingspipeline voor PM2.5-niveaus in Rotterdam",
+        tags: ["Machine Learning", "Feature Engineering", "Pipeline"],
+        challenge: "Automatiseren van het creëren en updaten van een ML-voorspellingsmodel op basis van sensordata voor het voorspellen van PM2.5-niveaus in Rotterdam.",
+        approach: "Creëren van een pipeline die features creëert uit sensordata en een regressiemodel traint met PyTorch, die elke dag wordt bijgewerkt om de PM2.5-niveaus van de volgende week te voorspellen.",
+        impact: "Creëren van een webpagina die de voorspelde PM2.5-niveaus in Rotterdam weergeeft, met een live update elke dag.",
+      },
+      "fpl-player-performance": {
+        title: "FPL Spelerprestatiemodel",
+        subtitle: "Voorspel de prestaties van FPL-spelers op basis van hun historische data",
+        tags: ["Machine Learning", "Feature Engineering", "Pipeline"],
+        challenge: "Automatiseren van het creëren en updaten van een ML-voorspellingsmodel op basis van historische data voor het voorspellen van de prestaties van FPL-spelers.",
+        approach: "Creëren van een pipeline die features creëert uit historische data en een regressiemodel traint met PyTorch, die elke week wordt bijgewerkt om de prestaties van FPL-spelers voor de volgende week te voorspellen.",
+        impact: "Creëren van een webpagina die de voorspelde prestaties van FPL-spelers weergeeft, met een live update elke week. Op basis van echte speldatagegevens kan het model worden bijgewerkt om de prestaties van FPL-spelers nauwkeuriger te voorspellen.",
+      },
+      "live-boat-tracking": {
+        title: "Real-time Boot Tracking",
+        subtitle: "Weergeef real-time openbaar vervoer op boten die in Rotterdam rijden",
+        tags: ["Real-time", "Openbaar Vervoer", "Embedded Systems"],
+        challenge: "Verwerken en weergeven van real-time openbaar vervoerdata op boten op basis van live locatiedata.",
+        approach: "Creëren van een server die meerdere voertuigen volgt met behulp van openbare dienstregelingsdata en live locatiedata van open data bronnen, en het creëren van een ingebedde pagina voor weergave op boten.",
+        impact: "Passagiers actuele informatie geven over hun reis, op meerdere schermen, met aankomsttijd schattingen en live updates.",
+      },
+    },
+    education: {
+      "0": {
+        institution: "KTH Royal Institute of Technology",
+        degree: "M.S. Software Engineering",
+        details: "Gestudeerd gedistribueerd computergebruik, AI en beveiliging aan KTH, later ontwikkeld geautomatiseerde ML-pipelines en mede-ontworpen een gedecentraliseerd streamverwerkingsplatform met CRDTs met KTH DSL en RISE.",
+      },
+      "1": {
+        institution: "Hogeschool Rotterdam",
+        degree: "B.S. Informatica",
+        details: "Samenwerking met TNO, SIMCEN en Sogeti aan innovatieve techprojecten, inclusief een VR-app voor claustrofobie, ervaring opgedaan met meerdere talen en negen industrieprojecten voltooid met een gemiddeld cijfer van 8.",
+      },
+    },
+    experience: {
+      "0": {
+        company: "Spaux",
+        role: "Full Stack Developer",
+        location: "Rotterdam, Nederland",
+        highlights: [
+          "Bijdragen als Full Stack Developer aan een in-house multitenant SaaS webapplicatie gebouwd met Laravel, TypeScript en Vue.js",
+          "Nieuwe aanvraagtypen en functies geïmplementeerd, functionaliteit en gebruikersworkflows verbeterd",
+          "Samenwerken met het team aan ontwerp, implementatie en testen om hoogwaardige ontwikkeling te waarborgen",
+          "Werken met een cloudgebaseerde microservice-architectuur met Docker, N8N, RabbitMQ en Hookdeck webhooks",
+          "Ondersteuning van integratie met grote telecomproviders zoals KPN en Odido voor geautomatiseerde datasynchronisatie",
+          "Assisteren bij projectmanagement en teamcoördinatie om voortgang bij te houden en ontwikkelingsdoelen af te stemmen",
+        ],
+      },
+      "1": {
+        company: "RISE Research Institutes of Sweden",
+        role: "Stagiair Software Engineer voor Gedistribueerde Systemen en Gegevensverwerking",
+        location: "Stockholm, Zweden",
+        highlights: [
+          "Onderzocht en aangepakt knelpunten in globale aggregaties voor grootschalige streamverwerkingssystemen",
+          "Ontworpen en geïmplementeerd een gedecentraliseerde gedeelde staat met Conflict-Free Replicated Data Types (CRDTs) om coördinatieoverhead te elimineren",
+          "Ontwikkeld een windowed CRDT-model dat exactly-once verwerkingssemantiek en flexibele aangepaste queries ondersteunt",
+          "Systeemprestaties geëvalueerd tegen Apache Flink met behulp van de Nexmark-benchmark, waarbij lage latentie en hoge schaalbaarheid werden aangetoond",
+          "Getoond hoe CRDT-gebaseerd statenbeheer doorvoer en consistentie kan verbeteren in gedecentraliseerde streamverwerking",
+        ],
+      },
+      "2": {
+        company: "Spaux voorheen bekend als Helmink",
+        role: "Junior Software Developer",
+        location: "Ridderkerk, Nederland",
+        highlights: [
+          "Gewerkt als Junior Software Developer en Scrum Master aan in-house CRM/ERP en integratieplatformprojecten",
+          "Microservices ontwikkeld voor real-time openbaar vervoer tracking",
+          "Samenwerking met projectmanagers om realistische ontwikkelingsmijlpalen te definiëren en te beheren",
+          "Versiebeheer en agile procesverbeteringen geleid in de hele organisatie",
+          "Onderzocht en nieuwe technologieën geïntroduceerd om projectefficiëntie en schaalbaarheid te verbeteren",
+          "Intuïtieve UI's ontworpen om gebruikerservaring te verbeteren",
+          "Bijdragen aan het architectuurontwerp van een nieuwe SaaS-applicatie in IT-communicatie",
+        ],
+      },
+      "3": {
+        company: "Sultan CRM",
+        role: "Junior Software Developer",
+        location: "Dordrecht, Nederland",
+        highlights: [
+          "ICT-stagiair bij Sultan CRM. Ik heb gewerkt met Devexpress, Blazor en XPO",
+          "Legacy .NET-codebases geüpgraded en gemoderniseerd naar huidige ontwikkelingsstandaarden",
+          "Applicatiefunctionaliteit verbeterd en bestaande systeemcomponenten geoptimaliseerd",
+          "Bijdragen aan databaseontwerp en -ontwikkeling voor verbeterde gegevensverwerking",
+          "Samenwerking met het team om workflows te verfijnen en beste engineeringpraktijken te implementeren",
+        ],
+      },
+    },
+  },
+  components: {
+    projectCard: {
+      challenge: "Uitdaging",
+      impact: "Impact",
+    },
+    projectDetail: {
+      challenge: "Uitdaging",
+      approach: "Aanpak",
+      impact: "Impact",
+      techStack: "Tech Stack",
+      metrics: "Metrieken",
+      visualization: "Visualisatie",
+      before: "Voor",
+      after: "Na",
+      improvement: "Verbetering",
+    },
+  },
+} as const;
+
