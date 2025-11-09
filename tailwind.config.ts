@@ -15,7 +15,10 @@ const config: Config = {
         background: "var(--color-background)",
         surface: "var(--color-surface)",
         text: "var(--color-text)",
+        "text-secondary": "var(--color-text-secondary)",
         "text-subtle": "var(--color-text-subtle)",
+        border: "var(--color-border)",
+        "border-strong": "var(--color-border-strong)",
       },
       borderRadius: {
         card: "var(--radius-card)",
@@ -24,6 +27,9 @@ const config: Config = {
       boxShadow: {
         clay: "var(--shadow-clay)",
         "clay-hover": "var(--shadow-clay-hover)",
+      },
+      fontFamily: {
+        primary: "var(--font-primary)",
       },
     },
   },
