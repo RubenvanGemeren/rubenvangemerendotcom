@@ -2,7 +2,7 @@ export const nlNL = {
   common: {
     name: "Ruben van Gemeren",
     title: "Full Stack Developer",
-    summary: "Recente afgestudeerde van KTH Royal Institute of Technology in Stockholm, Zweden. Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking. Momenteel werkend als Full Stack Developer bij Spaux, waar ik het eerste self-service portaal voor telecombeheer bouw.",
+    summary: "Recente afgestudeerde van KTH Royal Institute of Technology in Stockholm, Zweden. Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking. Momenteel werkend als Full Stack Developer bij Spaux.",
     nav: {
       home: "Home",
       projects: "Projecten",
@@ -35,15 +35,15 @@ export const nlNL = {
       highlights: {
         highlight1: {
           title: "Gedistribueerde Streamverwerking met CRDTs",
-          description: "Ontwikkeld Holon Streaming, een gedecentraliseerd streamverwerkingssysteem dat globale aggregaties schaalt met behulp van Windowed CRDTs om coördinatieknelpunten te elimineren.",
+          description: "Holon Streaming ontwikkeld, een gedecentraliseerd stream processing systeem dat globale aggregaties schaalt met behulp van Windowed CRDTs om coördinatie bottlenecks te elimineren.",
         },
         highlight2: {
           title: "ML Pipelines voor weersvoorspelling & FPL voorspellingen",
-          description: "Ontwikkeld ML-systemen met Hopsworks: een serverloze luchtkwaliteitsvoorspeller voor PM2.5-niveaus en een FPL-spelerprestatiemodel met Python en PyTorch voor wekelijkse puntvoorspellingen.",
+          description: "Ontwikkeld ML-systemen met Hopsworks: een serverloze luchtkwaliteitsvoorspeller voor PM2.5-niveaus en een FPL-spelerprestatiemodel met Python en PyTorch voor wekelijkse voorspellingen.",
         },
         highlight3: {
           title: "Real-time openbaar vervoer tracking",
-          description: "Ontwikkeld een real-time openbaar vervoer trackingsysteem met behulp van het Europese NeTEx-formaat voor boten in Rotterdam.",
+          description: "Een real-time openbaar vervoer trackingsysteem ontwikkeld met behulp van het Europese NeTEx-formaat voor boten in Rotterdam.",
         },
       },
     },
@@ -51,7 +51,7 @@ export const nlNL = {
       title: "Over",
       background: {
         title: "Achtergrond",
-        description: "Ik ben een KTH-afgestudeerde, oorspronkelijk uit Nederland, met een master in Gedistribueerde Systemen en Gegevensverwerking. Tijdens mijn studie heb ik stage gelopen bij RISE en bijgedragen aan lopend onderzoek dat nu uitmondt in een paper. Ik heb ongeveer twee tot drie jaar ervaring en werk momenteel als full-stack ontwikkelaar bij Spaux, waar ik een multi-tenant self-service portaal in Laravel vanaf de grond opbouw.",
+        description: "Ik ben een Nederlandse software engineer gespecialiseerd in gedistribueerde systemen en grootschalige gegevensverwerking. Ik heb mijn master Distributed Systems and Data Processing behaald aan de KTH Royal Institute of Technology. Tijdens mijn studie liep ik stage bij RISE, waar ik meewerkte aan een onderzoeksproject dat nu wordt verwerkt in een publicatie. Inmiddels heb ik ongeveer twee tot drie jaar werkervaring en werk ik als full-stack ontwikkelaar bij Spaux. Daar bouw ik een multi-tenant self-service portaal in Laravel vanaf de grond op.",
       },
       values: {
         title: "Waarden & Aanpak",
