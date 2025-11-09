@@ -19,20 +19,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // Load theme from localStorage on mount
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
-      if (savedTheme && themes[savedTheme]) {
+      if (savedTheme && savedTheme in themes) {
         setThemeNameState(savedTheme);
       }
     }
   }, []);
 
   const setTheme = (name: string) => {
-    if (themes[name]) {
+    if (name in themes) {
       setThemeNameState(name);
       localStorage.setItem("theme", name);
     }
   };
 
-  const theme = themes[themeName] || themes[defaultThemeName];
+  const theme = (themeName in themes ? themes[themeName as keyof typeof themes] : themes[defaultThemeName]);
   const cssVariables = themeToCSSVariables(theme);
 
   // Apply CSS variables to document

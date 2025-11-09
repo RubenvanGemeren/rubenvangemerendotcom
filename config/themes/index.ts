@@ -2,13 +2,14 @@ import { defaultTheme } from "./default";
 import { darkTheme } from "./dark";
 import { greenTheme } from "./green";
 
-export type Theme = typeof defaultTheme;
+// Use a more flexible type that allows different literal values
+export type Theme = typeof defaultTheme | typeof darkTheme | typeof greenTheme;
 
-export const themes: Record<string, Theme> = {
+export const themes = {
   default: defaultTheme,
   dark: darkTheme,
   green: greenTheme,
-};
+} as const satisfies Record<string, Theme>;
 
 export const defaultThemeName = "default";
 

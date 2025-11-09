@@ -39,7 +39,7 @@ export default function ThemeSelector() {
               color: selector.option.textColor,
             }}
           >
-            {themes[name].displayName}
+            {themes[name as keyof typeof themes].displayName}
           </option>
         ))}
       </select>
