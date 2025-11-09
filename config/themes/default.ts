@@ -29,19 +29,19 @@ export const defaultTheme = {
 
   // Color palette
   colors: {
-    primary: "#6366f1",      // Indigo
-    secondary: "#8b5cf6",    // Purple
-    accent: "#06b6d4",       // Cyan
+    primary: "#408080",      // Teal
+    secondary: "#4a90e2",    // Blue (complementary to teal)
+    accent: "#f97316",       // Orange (complementary to teal)
     background: "#f8fafc",   // Slate-50
     surface: "#ffffff",
     text: {
-      primary: "#1e293b",    // Slate-800
-      secondary: "#64748b",  // Slate-500
-      subtle: "#94a3b8",     // Slate-400
+      primary: "#1f2937",    // Gray tint
+      secondary: "#6b7280",  // Gray-500
+      subtle: "#9ca3af",     // Gray-400
     },
     border: {
-      default: "rgba(148, 163, 184, 0.2)", // Slate-400 with opacity
-      strong: "rgba(148, 163, 184, 0.4)",
+      default: "rgba(64, 128, 128, 0.2)", // Teal with opacity
+      strong: "rgba(64, 128, 128, 0.4)",
     },
   },
 
@@ -72,7 +72,7 @@ export const defaultTheme = {
     // Header styling
     header: {
       background: "rgba(248, 250, 252, 0.8)", // background with opacity
-      borderColor: "rgba(148, 163, 184, 0.2)",
+      borderColor: "rgba(64, 128, 128, 0.2)",
       backdropBlur: true,
       sticky: true,
       height: "4rem", // 64px
@@ -93,8 +93,8 @@ export const defaultTheme = {
 
     // Tag/Badge styling
     tag: {
-      background: "rgba(99, 102, 241, 0.1)", // primary/10
-      textColor: "#6366f1", // primary
+      background: "rgba(64, 128, 128, 0.1)", // primary/10
+      textColor: "#408080", // primary
       borderRadius: "9999px", // full
       padding: {
         x: "0.625rem", // 10px
@@ -114,20 +114,20 @@ export const defaultTheme = {
       fontSize: "0.875rem", // sm
       fontWeight: 500, // medium
       active: {
-        background: "rgba(99, 102, 241, 0.1)", // primary/10
-        textColor: "#6366f1", // primary
+        background: "rgba(64, 128, 128, 0.1)", // primary/10
+        textColor: "#408080", // primary
       },
       inactive: {
-        textColor: "#64748b", // text.secondary
+        textColor: "#6b7280", // text.secondary
         hoverBackground: "#ffffff", // surface
-        hoverTextColor: "#1e293b", // text.primary
+        hoverTextColor: "#1f2937", // text.primary
       },
     },
 
     // Chart styling
     chart: {
-      colors: ["#6366f1", "#8b5cf6", "#06b6d4", "#10b981", "#f59e0b"],
-      axisColor: "#64748b", // text.secondary
+      colors: ["#408080", "#4a90e2", "#f97316", "#7c3aed", "#10b981"],
+      axisColor: "#6b7280", // text.secondary
       axisFontSize: "0.75rem", // xs
       tooltip: {
         background: "#ffffff", // surface
@@ -140,16 +140,16 @@ export const defaultTheme = {
 
     // Footer styling
     footer: {
-      borderColor: "rgba(148, 163, 184, 0.2)",
-      textColor: "#64748b", // text.secondary
-      linkHoverColor: "#6366f1", // primary
+      borderColor: "rgba(64, 128, 128, 0.2)",
+      textColor: "#6b7280", // text.secondary
+      linkHoverColor: "#408080", // primary
     },
 
     // Theme selector styling
     themeSelector: {
       background: "#ffffff", // surface
-      textColor: "#1e293b", // text.primary
-      borderColor: "rgba(148, 163, 184, 0.2)", // border.default
+      textColor: "#1f2937", // text.primary
+      borderColor: "rgba(64, 128, 128, 0.2)", // border.default
       borderRadius: "0.5rem", // button
       padding: {
         x: "0.75rem", // 12px
@@ -158,18 +158,18 @@ export const defaultTheme = {
       fontSize: "0.875rem", // sm
       fontWeight: 500, // medium
       fontFamily: "Inter, system-ui, -apple-system, sans-serif",
-      arrowColor: "#64748b", // text.secondary
+      arrowColor: "#6b7280", // text.secondary
       hover: {
-        borderColor: "#6366f1", // primary
+        borderColor: "#408080", // primary
       },
       focus: {
-        borderColor: "#6366f1", // primary
-        ringColor: "rgba(99, 102, 241, 0.2)", // primary/20
+        borderColor: "#408080", // primary
+        ringColor: "rgba(64, 128, 128, 0.2)", // primary/20
       },
       option: {
         background: "#ffffff", // surface
-        textColor: "#1e293b", // text.primary
-        hoverBackground: "rgba(99, 102, 241, 0.1)", // primary/10
+        textColor: "#1f2937", // text.primary
+        hoverBackground: "rgba(64, 128, 128, 0.1)", // primary/10
       },
     },
 
@@ -179,29 +179,29 @@ export const defaultTheme = {
         fontSize: "2.25rem", // 4xl
         fontWeight: 700, // bold
         lineHeight: 1.2,
-        color: "#1e293b", // text.primary
+        color: "#1f2937", // text.primary
       },
       h2: {
         fontSize: "1.875rem", // 3xl
         fontWeight: 600, // semibold
         lineHeight: 1.3,
-        color: "#1e293b", // text.primary
+        color: "#1f2937", // text.primary
       },
       h3: {
         fontSize: "1.5rem", // 2xl
         fontWeight: 600, // semibold
         lineHeight: 1.4,
-        color: "#1e293b", // text.primary
+        color: "#1f2937", // text.primary
       },
       body: {
         fontSize: "1rem", // base
         lineHeight: 1.6,
-        color: "#1e293b", // text.primary
+        color: "#1f2937", // text.primary
       },
       bodySecondary: {
         fontSize: "0.875rem", // sm
         lineHeight: 1.5,
-        color: "#64748b", // text.secondary
+        color: "#6b7280", // text.secondary
       },
     },
   },

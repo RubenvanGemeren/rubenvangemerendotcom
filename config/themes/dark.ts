@@ -27,19 +27,19 @@ export const darkTheme = {
   },
 
   colors: {
-    primary: "#818cf8",      // Lighter Indigo for dark mode
-    secondary: "#a78bfa",    // Lighter Purple
-    accent: "#22d3ee",       // Lighter Cyan
-    background: "#0f172a",   // Slate-900
-    surface: "#1e293b",      // Slate-800
+    primary: "#5ba3a3",      // Lighter teal for dark mode
+    secondary: "#6ba3e2",    // Lighter blue
+    accent: "#fb923c",       // Lighter orange
+    background: "#1f2937",   // Gray tint
+    surface: "#374151",      // Gray-700 (lighter than background)
     text: {
-      primary: "#f1f5f9",    // Slate-100
-      secondary: "#cbd5e1",  // Slate-300
-      subtle: "#94a3b8",     // Slate-400
+      primary: "#f9fafb",    // Gray-50
+      secondary: "#d1d5db",  // Gray-300
+      subtle: "#9ca3af",     // Gray-400
     },
     border: {
-      default: "rgba(148, 163, 184, 0.2)",
-      strong: "rgba(148, 163, 184, 0.4)",
+      default: "rgba(64, 128, 128, 0.3)",
+      strong: "rgba(64, 128, 128, 0.5)",
     },
   },
 
@@ -65,15 +65,15 @@ export const darkTheme = {
 
   components: {
     header: {
-      background: "rgba(15, 23, 42, 0.8)", // background with opacity
-      borderColor: "rgba(148, 163, 184, 0.2)",
+      background: "rgba(31, 41, 55, 0.8)", // background with opacity
+      borderColor: "rgba(64, 128, 128, 0.3)",
       backdropBlur: true,
       sticky: true,
       height: "4rem",
     },
 
     card: {
-      background: "#1e293b", // surface
+      background: "#374151", // surface
       borderRadius: "1rem",
       padding: {
         sm: "1rem",
@@ -85,8 +85,8 @@ export const darkTheme = {
     },
 
     tag: {
-      background: "rgba(129, 140, 248, 0.2)", // primary/20 for better contrast
-      textColor: "#818cf8", // primary
+      background: "rgba(91, 163, 163, 0.2)", // primary/20 for better contrast
+      textColor: "#5ba3a3", // primary
       borderRadius: "9999px",
       padding: {
         x: "0.625rem",
@@ -105,23 +105,23 @@ export const darkTheme = {
       fontSize: "0.875rem",
       fontWeight: 500,
       active: {
-        background: "rgba(129, 140, 248, 0.2)", // primary/20
-        textColor: "#818cf8", // primary
+        background: "rgba(91, 163, 163, 0.2)", // primary/20
+        textColor: "#5ba3a3", // primary
       },
       inactive: {
-        textColor: "#cbd5e1", // text.secondary
-        hoverBackground: "#1e293b", // surface
-        hoverTextColor: "#f1f5f9", // text.primary
+        textColor: "#d1d5db", // text.secondary
+        hoverBackground: "#374151", // surface
+        hoverTextColor: "#f9fafb", // text.primary
       },
     },
 
     chart: {
-      colors: ["#818cf8", "#a78bfa", "#22d3ee", "#34d399", "#fbbf24"],
-      axisColor: "#cbd5e1", // text.secondary
+      colors: ["#5ba3a3", "#6ba3e2", "#fb923c", "#7c3aed", "#10b981"],
+      axisColor: "#d1d5db", // text.secondary
       axisFontSize: "0.75rem",
       tooltip: {
-        background: "#1e293b", // surface
-        borderColor: "#0f172a", // background
+        background: "#374151", // surface
+        borderColor: "#1f2937", // background
         borderRadius: "0.5rem",
         fontSize: "0.75rem",
       },
@@ -129,15 +129,15 @@ export const darkTheme = {
     },
 
     footer: {
-      borderColor: "rgba(148, 163, 184, 0.2)",
-      textColor: "#cbd5e1", // text.secondary
-      linkHoverColor: "#818cf8", // primary
+      borderColor: "rgba(64, 128, 128, 0.3)",
+      textColor: "#d1d5db", // text.secondary
+      linkHoverColor: "#5ba3a3", // primary
     },
 
     themeSelector: {
-      background: "#1e293b", // surface
-      textColor: "#f1f5f9", // text.primary
-      borderColor: "rgba(148, 163, 184, 0.2)", // border.default
+      background: "#374151", // surface
+      textColor: "#f9fafb", // text.primary
+      borderColor: "rgba(64, 128, 128, 0.3)", // border.default
       borderRadius: "0.5rem", // button
       padding: {
         x: "0.75rem", // 12px
@@ -146,18 +146,18 @@ export const darkTheme = {
       fontSize: "0.875rem", // sm
       fontWeight: 500, // medium
       fontFamily: "Inter, system-ui, -apple-system, sans-serif",
-      arrowColor: "#cbd5e1", // text.secondary
+      arrowColor: "#d1d5db", // text.secondary
       hover: {
-        borderColor: "#818cf8", // primary
+        borderColor: "#5ba3a3", // primary
       },
       focus: {
-        borderColor: "#818cf8", // primary
-        ringColor: "rgba(129, 140, 248, 0.2)", // primary/20
+        borderColor: "#5ba3a3", // primary
+        ringColor: "rgba(91, 163, 163, 0.2)", // primary/20
       },
       option: {
-        background: "#1e293b", // surface
-        textColor: "#f1f5f9", // text.primary
-        hoverBackground: "rgba(129, 140, 248, 0.2)", // primary/20
+        background: "#374151", // surface
+        textColor: "#f9fafb", // text.primary
+        hoverBackground: "rgba(91, 163, 163, 0.2)", // primary/20
       },
     },
 
@@ -166,29 +166,29 @@ export const darkTheme = {
         fontSize: "2.25rem",
         fontWeight: 700,
         lineHeight: 1.2,
-        color: "#f1f5f9", // text.primary
+        color: "#f9fafb", // text.primary
       },
       h2: {
         fontSize: "1.875rem",
         fontWeight: 600,
         lineHeight: 1.3,
-        color: "#f1f5f9", // text.primary
+        color: "#f9fafb", // text.primary
       },
       h3: {
         fontSize: "1.5rem",
         fontWeight: 600,
         lineHeight: 1.4,
-        color: "#f1f5f9", // text.primary
+        color: "#f9fafb", // text.primary
       },
       body: {
         fontSize: "1rem",
         lineHeight: 1.6,
-        color: "#f1f5f9", // text.primary
+        color: "#f9fafb", // text.primary
       },
       bodySecondary: {
         fontSize: "0.875rem",
         lineHeight: 1.5,
-        color: "#cbd5e1", // text.secondary
+        color: "#d1d5db", // text.secondary
       },
     },
   },
