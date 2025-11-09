@@ -37,7 +37,7 @@ export default function MetricChart({ data, height = 200 }: MetricChartProps) {
         <Bar
           dataKey="value"
           fill={theme.colors.primary}
-          radius={theme.components.chart.barRadius}
+          radius={[...theme.components.chart.barRadius]}
         />
       </BarChart>
     </ResponsiveContainer>
