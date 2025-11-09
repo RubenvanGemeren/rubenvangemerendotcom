@@ -32,7 +32,34 @@ export function useTranslatedProject(project: Project): Project {
 }
 
 export function useTranslatedProjects(projects: Project[]): Project[] {
-  return projects.map((project) => useTranslatedProject(project));
+  const { t } = useI18n();
+
+  return projects.map((project) => {
+    const translationKey = `data.projects.${project.slug}`;
+
+    // Get translated tags - they're stored as an array in translations
+    const translatedTags = project.tags.map((tag, index) => {
+      const translatedTag = t(`${translationKey}.tags.${index}`);
+      // If translation key is returned (not found), use original tag
+      return translatedTag.startsWith(`${translationKey}.tags.`) ? tag : translatedTag;
+    });
+
+    return {
+      ...project,
+      title: t(`${translationKey}.title`),
+      subtitle: t(`${translationKey}.subtitle`),
+      tags: translatedTags,
+      challenge: t(`${translationKey}.challenge`),
+      approach: t(`${translationKey}.approach`),
+      impact: t(`${translationKey}.impact`),
+      metrics: project.metrics
+        ? {
+            ...project.metrics,
+            label: t(`${translationKey}.metrics.label`),
+          }
+        : undefined,
+    };
+  });
 }
 
 export function useTranslatedEducation(education: Education[]): Education[] {

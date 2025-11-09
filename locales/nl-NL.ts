@@ -2,7 +2,7 @@ export const nlNL = {
   common: {
     name: "Ruben van Gemeren",
     title: "Full Stack Developer",
-    summary: "Recente afgestudeerde van KTH Royal Institute of Technology in Stockholm, Zweden. Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking. Momenteel werkend als Full Stack Developer bij Spaux.",
+    summary: "Recent afgestudeerde van KTH Royal Institute of Technology in Stockholm, Zweden. Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking. Momenteel werkend als Full Stack Developer bij Spaux.",
     nav: {
       home: "Home",
       projects: "Projecten",
@@ -132,7 +132,7 @@ export const nlNL = {
       "1": {
         institution: "Hogeschool Rotterdam",
         degree: "B.S. Informatica",
-        details: "Samenwerking met TNO, SIMCEN en Sogeti aan innovatieve techprojecten—inclusief een VR-app voor claustrofobie—ervaring opgedaan met meerdere talen en negen industrieprojecten voltooid met een gemiddeld cijfer van 8.",
+        details: "Samenwerking met TNO, SIMCEN en Sogeti aan innovatieve techprojecten, inclusief een VR-app voor claustrofobie, ervaring opgedaan met meerdere talen en negen industrieprojecten voltooid met een gemiddeld cijfer van 8.",
       },
     },
     experience: {
@@ -142,7 +142,7 @@ export const nlNL = {
         location: "Rotterdam, Nederland",
         highlights: [
           "Bijdragen als Full Stack Developer aan een in-house multitenant SaaS webapplicatie gebouwd met Laravel, TypeScript en Vue.js",
-          "Nieuwe indieningstypen en functies geïmplementeerd, functionaliteit en gebruikersworkflows verbeterd",
+          "Nieuwe aanvraagtypen en functies geïmplementeerd, functionaliteit en gebruikersworkflows verbeterd",
           "Samenwerken met het team aan ontwerp, implementatie en testen om hoogwaardige ontwikkeling te waarborgen",
           "Werken met een cloudgebaseerde microservice-architectuur met Docker, N8N, RabbitMQ en Hookdeck webhooks",
           "Ondersteuning van integratie met grote telecomproviders zoals KPN en Odido voor geautomatiseerde datasynchronisatie",
