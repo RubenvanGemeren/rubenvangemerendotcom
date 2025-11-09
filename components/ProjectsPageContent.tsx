@@ -3,12 +3,15 @@
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import type { Project } from "@/types/content";
+import { useI18n } from "@/lib/i18n-context";
 
 interface ProjectsPageContentProps {
   projects: Project[];
 }
 
 export default function ProjectsPageContent({ projects }: ProjectsPageContentProps) {
+  const { t } = useI18n();
+
   return (
     <>
       <motion.div
@@ -17,9 +20,9 @@ export default function ProjectsPageContent({ projects }: ProjectsPageContentPro
         transition={{ duration: 0.3 }}
         className="mb-12"
       >
-        <h1 className="text-4xl font-bold text-text mb-4">Projects</h1>
+        <h1 className="text-4xl font-bold text-text mb-4">{t("pages.projects.title")}</h1>
         <p className="text-lg text-text-subtle max-w-3xl">
-          A selection of projects focusing on distributed systems, data platforms, and infrastructure.
+          {t("pages.projects.description")}
         </p>
       </motion.div>
 

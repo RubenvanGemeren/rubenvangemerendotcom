@@ -4,12 +4,17 @@ import { motion } from "framer-motion";
 import ClayCard from "./ClayCard";
 import Tag from "./Tag";
 import type { Experience } from "@/types/content";
+import { useI18n } from "@/lib/i18n-context";
+import { useTranslatedExperience } from "@/lib/use-translated-data";
 
 interface ExperiencePageContentProps {
   experience: Experience[];
 }
 
 export default function ExperiencePageContent({ experience }: ExperiencePageContentProps) {
+  const { t } = useI18n();
+  const translatedExperience = useTranslatedExperience(experience);
+
   return (
     <>
       <motion.div
@@ -18,14 +23,14 @@ export default function ExperiencePageContent({ experience }: ExperiencePageCont
         transition={{ duration: 0.3 }}
         className="mb-12"
       >
-        <h1 className="text-4xl font-bold text-text mb-4">Experience</h1>
+        <h1 className="text-4xl font-bold text-text mb-4">{t("pages.experience.title")}</h1>
         <p className="text-lg text-text-subtle max-w-3xl">
-          Building scalable, reliable systems and data platforms at scale.
+          {t("pages.experience.description")}
         </p>
       </motion.div>
 
       <div className="space-y-6">
-        {experience.map((exp, index) => (
+        {translatedExperience.map((exp, index) => (
           <motion.div
             key={`${exp.company}-${exp.startDate}`}
             initial={{ opacity: 0, y: 20 }}
@@ -49,13 +54,13 @@ export default function ExperiencePageContent({ experience }: ExperiencePageCont
                   <span className="mx-2">–</span>
                   <span>
                     {exp.current
-                      ? "Present"
+                      ? t("common.present")
                       : exp.endDate
                         ? new Date(exp.endDate).toLocaleDateString("en-US", {
                             month: "short",
                             year: "numeric",
                           })
-                        : "Present"}
+                        : t("common.present")}
                   </span>
                 </div>
               </div>
