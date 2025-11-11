@@ -35,7 +35,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const theme = (themeName in themes ? themes[themeName as keyof typeof themes] : themes[defaultThemeName]);
   const cssVariables = themeToCSSVariables(theme);
 
-  // Apply CSS variables to document
+  // Apply CSS variables to document and dark class for Tailwind dark mode
   useEffect(() => {
     if (typeof window !== "undefined") {
       Object.entries(cssVariables).forEach(([key, value]) => {
@@ -47,8 +47,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         "--font-primary",
         `${theme.font.family.primary}, ${theme.font.family.fallback}`
       );
+
+      // Add/remove dark class for Tailwind dark mode support
+      if (themeName === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     }
-  }, [theme, cssVariables]);
+  }, [theme, cssVariables, themeName]);
 
   // Always provide the context, even before mount (for SSR)
   return (
