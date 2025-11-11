@@ -17,3 +17,11 @@
   }
 }
 
+/* Hide loading states in GitHub calendar */
+.github-calendar-wrapper [class*="loading"],
+.github-calendar-wrapper [class*="Loading"],
+.github-calendar-wrapper [data-loading],
+.github-calendar-wrapper [aria-busy="true"] {
+  display: none !important;
+}
+

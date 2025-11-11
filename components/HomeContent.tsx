@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import ClayCard from "./ClayCard";
 import ProjectCard from "./ProjectCard";
+import GitHubActivity from "./GitHubActivity";
 import type { Profile, Project } from "@/types/content";
 import { useI18n } from "@/lib/i18n-context";
 
@@ -37,9 +38,33 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
         transition={{ duration: 0.3 }}
         className="mb-12"
       >
-        <h1 className="text-4xl lg:text-5xl font-bold text-text mb-4">{t("common.name")}</h1>
-        <h2 className="text-2xl lg:text-3xl font-semibold text-primary mb-6">{t("common.title")}</h2>
-        <p className="text-lg text-text-subtle max-w-3xl leading-relaxed">{t("common.summary")}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div>
+            <h1 className="text-4xl lg:text-5xl font-bold text-text mb-4">{t("common.name")}</h1>
+            <h2 className="text-2xl lg:text-3xl font-semibold text-primary mb-6">{t("common.title")}</h2>
+            <p className="text-lg text-text-subtle max-w-3xl leading-relaxed">{t("common.summary")}</p>
+          </div>
+          {profile.links?.github && (
+            <div className="flex justify-center lg:justify-end">
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-[1.02]"
+              >
+                <GitHubActivity
+                  githubUrl={profile.links.github}
+                  compact
+                  rounded
+                  lastMonths={6}
+                  showLabels={false}
+                  showTotalContributions={false}
+                  className="max-w-full cursor-pointer"
+                />
+              </a>
+            </div>
+          )}
+        </div>
       </motion.div>
 
       <motion.div
