@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { useGlassMode } from "@/lib/glass-mode-context";
 
 interface ClayCardProps {
   children: ReactNode;
@@ -10,11 +11,14 @@ interface ClayCardProps {
 }
 
 export default function ClayCard({ children, className = "", hover = true }: ClayCardProps) {
+  const { isGlassModeEnabled } = useGlassMode();
+
   return (
     <motion.div
       className={`
-        bg-surface rounded-card shadow-clay
-        ${hover ? "hover:shadow-clay-hover transition-shadow duration-300" : ""}
+        ${isGlassModeEnabled ? "liquid-glass" : "bg-surface shadow-clay"}
+        rounded-card
+        ${hover && !isGlassModeEnabled ? "hover:shadow-clay-hover transition-shadow duration-300" : ""}
         ${className}
       `}
       whileHover={hover ? { y: -2 } : undefined}

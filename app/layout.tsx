@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme-context";
+import { GlassModeProvider } from "@/lib/glass-mode-context";
 import { I18nProvider } from "@/lib/i18n-context";
 import LangAttribute from "@/components/LangAttribute";
 
@@ -31,10 +32,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${roboto.variable}`}>
+        <svg style={{ display: "none" }} xmlns="http://www.w3.org/2000/svg">
+          <filter id="glass-blur" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="0.003 0.007" numOctaves={1} result="turbulence" />
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale={200} xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
         <I18nProvider>
           <ThemeProvider>
-            <LangAttribute />
-            {children}
+            <GlassModeProvider>
+              <LangAttribute />
+              {children}
+            </GlassModeProvider>
           </ThemeProvider>
         </I18nProvider>
       </body>

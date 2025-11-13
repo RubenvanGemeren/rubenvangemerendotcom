@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import AnimatedBlobs from "./AnimatedBlobs";
 import { getProfile } from "@/lib/content";
 
 interface LayoutProps {
@@ -11,9 +12,10 @@ export default function Layout({ children }: LayoutProps) {
   const profile = getProfile();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <AnimatedBlobs />
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 relative z-10">{children}</main>
       <Footer profile={profile} />
     </div>
   );

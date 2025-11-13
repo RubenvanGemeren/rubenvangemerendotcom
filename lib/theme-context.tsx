@@ -54,6 +54,42 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       } else {
         document.documentElement.classList.remove("dark");
       }
+
+      // Set glass mode CSS variables based on current theme
+      // These adapt to the theme colors for proper glass effect
+      if (themeName === "dark") {
+        // Dark theme glass settings
+        document.documentElement.style.setProperty("--c-glass", "#bbbbbc");
+        document.documentElement.style.setProperty("--c-light", "#fff");
+        document.documentElement.style.setProperty("--c-dark", "#000");
+        document.documentElement.style.setProperty("--glass-reflex-dark", "2");
+        document.documentElement.style.setProperty("--glass-reflex-light", "0.3");
+        document.documentElement.style.setProperty("--saturation", "150%");
+      } else if (themeName === "green") {
+        // Green theme glass settings (light theme variant)
+        document.documentElement.style.setProperty("--c-glass", "#bbbbbc");
+        document.documentElement.style.setProperty("--c-light", "#fff");
+        document.documentElement.style.setProperty("--c-dark", "#000");
+        document.documentElement.style.setProperty("--glass-reflex-dark", "1");
+        document.documentElement.style.setProperty("--glass-reflex-light", "1");
+        document.documentElement.style.setProperty("--saturation", "150%");
+      } else if (themeName === "android") {
+        // Android theme glass settings (light theme variant)
+        document.documentElement.style.setProperty("--c-glass", "#bbbbbc");
+        document.documentElement.style.setProperty("--c-light", "#fff");
+        document.documentElement.style.setProperty("--c-dark", "#000");
+        document.documentElement.style.setProperty("--glass-reflex-dark", "1");
+        document.documentElement.style.setProperty("--glass-reflex-light", "1");
+        document.documentElement.style.setProperty("--saturation", "150%");
+      } else {
+        // Default/light theme glass settings
+        document.documentElement.style.setProperty("--c-glass", "#bbbbbc");
+        document.documentElement.style.setProperty("--c-light", "#fff");
+        document.documentElement.style.setProperty("--c-dark", "#000");
+        document.documentElement.style.setProperty("--glass-reflex-dark", "1");
+        document.documentElement.style.setProperty("--glass-reflex-light", "1");
+        document.documentElement.style.setProperty("--saturation", "150%");
+      }
     }
   }, [theme, cssVariables, themeName]);
 

@@ -5,10 +5,13 @@ import Link from "next/link";
 import NavLink from "./NavLink";
 import ThemeSelector from "./ThemeSelector";
 import LanguageSelector from "./LanguageSelector";
+import GlassModeToggle from "./GlassModeToggle";
 import { useI18n } from "@/lib/i18n-context";
+import { useGlassMode } from "@/lib/glass-mode-context";
 
 export default function Header() {
   const { t } = useI18n();
+  const { isGlassModeEnabled } = useGlassMode();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -20,7 +23,11 @@ export default function Header() {
   };
 
   return (
-    <header className="border-b border-surface/50 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+    <header className={`border-b border-surface/50 sticky top-0 z-50 ${
+      isGlassModeEnabled
+        ? "liquid-glass"
+        : "bg-background/80 backdrop-blur-sm"
+    }`}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
@@ -41,12 +48,15 @@ export default function Header() {
             </nav>
             <LanguageSelector />
             <ThemeSelector />
+            <GlassModeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-md text-text hover:text-primary hover:bg-surface/50 transition-colors"
+            className={`md:hidden p-2 rounded-md text-text hover:text-primary transition-colors ${
+              isGlassModeEnabled ? "liquid-glass" : "hover:bg-surface/50"
+            }`}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -90,6 +100,7 @@ export default function Header() {
             <div className="flex items-center gap-4 pt-2">
               <LanguageSelector />
               <ThemeSelector />
+              <GlassModeToggle />
             </div>
           </nav>
         </div>

@@ -2,16 +2,18 @@
 
 import { useI18n } from "@/lib/i18n-context";
 import { useTheme } from "@/lib/theme-context";
+import { useGlassMode } from "@/lib/glass-mode-context";
 import { availableLocales, type Locale } from "@/locales";
 
 const localeNames: Record<Locale, string> = {
   "en-EN": "English",
-  "nl-NL": "Nederlands",
+  "nl-NL": "Dutch",
 };
 
 export default function LanguageSelector() {
   const { locale, setLocale, availableLocales: available, t } = useI18n();
   const { theme } = useTheme();
+  const { isGlassModeEnabled } = useGlassMode();
   const selector = theme.components.themeSelector;
 
   return (
@@ -19,22 +21,38 @@ export default function LanguageSelector() {
       <select
         value={locale}
         onChange={(e) => setLocale(e.target.value as Locale)}
-        className="language-selector appearance-none cursor-pointer transition-colors focus:outline-none"
-        style={{
-          backgroundColor: selector.background,
-          color: selector.textColor,
-          borderColor: selector.borderColor,
-          borderRadius: selector.borderRadius,
-          paddingLeft: selector.padding.x,
-          paddingRight: `calc(${selector.padding.x} + 1.5rem)`, // Extra space for arrow
-          paddingTop: selector.padding.y,
-          paddingBottom: selector.padding.y,
-          fontSize: selector.fontSize,
-          fontWeight: selector.fontWeight,
-          fontFamily: selector.fontFamily,
-          borderWidth: "1px",
-          borderStyle: "solid",
-        }}
+        className={`language-selector appearance-none cursor-pointer transition-colors focus:outline-none ${
+          isGlassModeEnabled ? "liquid-glass" : ""
+        }`}
+        style={
+          isGlassModeEnabled
+            ? {
+                color: selector.textColor,
+                borderRadius: selector.borderRadius,
+                paddingLeft: selector.padding.x,
+                paddingRight: `calc(${selector.padding.x} + 1.5rem)`,
+                paddingTop: selector.padding.y,
+                paddingBottom: selector.padding.y,
+                fontSize: selector.fontSize,
+                fontWeight: selector.fontWeight,
+                fontFamily: selector.fontFamily,
+              }
+            : {
+                backgroundColor: selector.background,
+                color: selector.textColor,
+                borderColor: selector.borderColor,
+                borderRadius: selector.borderRadius,
+                paddingLeft: selector.padding.x,
+                paddingRight: `calc(${selector.padding.x} + 1.5rem)`,
+                paddingTop: selector.padding.y,
+                paddingBottom: selector.padding.y,
+                fontSize: selector.fontSize,
+                fontWeight: selector.fontWeight,
+                fontFamily: selector.fontFamily,
+                borderWidth: "1px",
+                borderStyle: "solid",
+              }
+        }
         aria-label={t("common.ariaLabels.selectLanguage")}
       >
         {available.map((loc) => (
