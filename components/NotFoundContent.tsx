@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n-context";
+import { useGlassMode } from "@/lib/glass-mode-context";
 
 export default function NotFoundContent() {
   const { t } = useI18n();
+  const { isGlassModeEnabled } = useGlassMode();
 
   return (
     <div className="text-center">
@@ -12,7 +14,11 @@ export default function NotFoundContent() {
       <p className="text-lg text-text-subtle mb-8">{t("common.notFound.message")}</p>
       <Link
         href="/"
-        className="inline-block px-6 py-3 bg-primary text-white rounded-button hover:opacity-90 transition-opacity"
+        className={`inline-block px-6 py-3 rounded-button transition-opacity ${
+          isGlassModeEnabled
+            ? "liquid-glass text-primary"
+            : "bg-primary text-white hover:opacity-90"
+        }`}
       >
         {t("common.notFound.goHome")}
       </Link>

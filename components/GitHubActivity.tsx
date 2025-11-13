@@ -68,10 +68,24 @@ export default function GitHubActivity({
         return null;
       }
 
-      // Get theme colors for both light and dark themes
+      // Get theme colors based on the current app theme
       // react-activity-calendar expects a theme object with light and dark arrays
-      const lightColors = getThemeColors("light") || getThemeColors("standard") || [];
-      const darkColors = getThemeColors("dark") || getThemeColors("standard") || [];
+      let lightColors: string[] = [];
+      let darkColors: string[] = [];
+
+      if (themeName === "android") {
+        // Use Android theme for both light and dark (Android theme is light)
+        const androidColors = getThemeColors("android") || getThemeColors("standard") || [];
+        lightColors = Array.from(androidColors);
+        darkColors = Array.from(androidColors); // Android theme works for both
+      } else if (themeName === "dark") {
+        lightColors = getThemeColors("light") || getThemeColors("standard") || [];
+        darkColors = getThemeColors("dark") || getThemeColors("standard") || [];
+      } else {
+        // Default/light themes
+        lightColors = getThemeColors("light") || getThemeColors("standard") || [];
+        darkColors = getThemeColors("dark") || getThemeColors("standard") || [];
+      }
 
       // Create theme object in the format expected by react-activity-calendar
       const calendarTheme = {
@@ -170,15 +184,17 @@ export default function GitHubActivity({
   }
 
   return (
-    <ClayCard className={`${compact ? 'p-4' : 'p-6'} ${className}`}>
+    <ClayCard className={`${compact ? 'py-4 sm:px-3' : 'p-6'} ${className}`}>
       <div
-        className="w-full github-calendar-wrapper"
+        className="w-full github-calendar-wrapper flex justify-center items-center"
         style={{ minHeight: compact ? '120px' : '200px' }}
       >
-        <GitHubCalendar
-          key={`${finalUsername}-${year || 'current'}-${themeName}`}
-          {...calendarProps}
-        />
+        <div className="w-full max-w-full overflow-hidden">
+          <GitHubCalendar
+            key={`${finalUsername}-${year || 'current'}-${themeName}`}
+            {...calendarProps}
+          />
+        </div>
       </div>
     </ClayCard>
   );

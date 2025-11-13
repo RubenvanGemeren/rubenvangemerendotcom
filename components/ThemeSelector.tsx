@@ -3,10 +3,12 @@
 import { useTheme } from "@/lib/theme-context";
 import { themes } from "@/config/themes";
 import { useI18n } from "@/lib/i18n-context";
+import { useGlassMode } from "@/lib/glass-mode-context";
 
 export default function ThemeSelector() {
   const { themeName, setTheme, availableThemes, theme } = useTheme();
   const { t } = useI18n();
+  const { isGlassModeEnabled } = useGlassMode();
   const selector = theme.components.themeSelector;
 
   return (
@@ -14,22 +16,38 @@ export default function ThemeSelector() {
       <select
         value={themeName}
         onChange={(e) => setTheme(e.target.value)}
-        className="theme-selector appearance-none cursor-pointer transition-colors focus:outline-none"
-        style={{
-          backgroundColor: selector.background,
-          color: selector.textColor,
-          borderColor: selector.borderColor,
-          borderRadius: selector.borderRadius,
-          paddingLeft: selector.padding.x,
-          paddingRight: `calc(${selector.padding.x} + 1.5rem)`, // Extra space for arrow
-          paddingTop: selector.padding.y,
-          paddingBottom: selector.padding.y,
-          fontSize: selector.fontSize,
-          fontWeight: selector.fontWeight,
-          fontFamily: selector.fontFamily,
-          borderWidth: "1px",
-          borderStyle: "solid",
-        }}
+        className={`theme-selector appearance-none cursor-pointer transition-colors focus:outline-none ${
+          isGlassModeEnabled ? "liquid-glass" : ""
+        }`}
+        style={
+          isGlassModeEnabled
+            ? {
+                color: selector.textColor,
+                borderRadius: selector.borderRadius,
+                paddingLeft: selector.padding.x,
+                paddingRight: `calc(${selector.padding.x} + 1.5rem)`,
+                paddingTop: selector.padding.y,
+                paddingBottom: selector.padding.y,
+                fontSize: selector.fontSize,
+                fontWeight: selector.fontWeight,
+                fontFamily: selector.fontFamily,
+              }
+            : {
+                backgroundColor: selector.background,
+                color: selector.textColor,
+                borderColor: selector.borderColor,
+                borderRadius: selector.borderRadius,
+                paddingLeft: selector.padding.x,
+                paddingRight: `calc(${selector.padding.x} + 1.5rem)`,
+                paddingTop: selector.padding.y,
+                paddingBottom: selector.padding.y,
+                fontSize: selector.fontSize,
+                fontWeight: selector.fontWeight,
+                fontFamily: selector.fontFamily,
+                borderWidth: "1px",
+                borderStyle: "solid",
+              }
+        }
         aria-label={t("common.ariaLabels.selectTheme")}
       >
         {availableThemes.map((name) => (
