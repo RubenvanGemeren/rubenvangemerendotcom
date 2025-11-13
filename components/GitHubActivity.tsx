@@ -68,10 +68,24 @@ export default function GitHubActivity({
         return null;
       }
 
-      // Get theme colors for both light and dark themes
+      // Get theme colors based on the current app theme
       // react-activity-calendar expects a theme object with light and dark arrays
-      const lightColors = getThemeColors("light") || getThemeColors("standard") || [];
-      const darkColors = getThemeColors("dark") || getThemeColors("standard") || [];
+      let lightColors: string[] = [];
+      let darkColors: string[] = [];
+
+      if (themeName === "android") {
+        // Use Android theme for both light and dark (Android theme is light)
+        const androidColors = getThemeColors("android") || getThemeColors("standard") || [];
+        lightColors = Array.from(androidColors);
+        darkColors = Array.from(androidColors); // Android theme works for both
+      } else if (themeName === "dark") {
+        lightColors = getThemeColors("light") || getThemeColors("standard") || [];
+        darkColors = getThemeColors("dark") || getThemeColors("standard") || [];
+      } else {
+        // Default/light themes
+        lightColors = getThemeColors("light") || getThemeColors("standard") || [];
+        darkColors = getThemeColors("dark") || getThemeColors("standard") || [];
+      }
 
       // Create theme object in the format expected by react-activity-calendar
       const calendarTheme = {

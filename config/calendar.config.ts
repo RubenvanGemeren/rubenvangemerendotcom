@@ -126,6 +126,18 @@ export const calendarThemes: Record<string, CalendarTheme> = {
     level3: '#30a14e', // Dark green
     level4: '#216e39', // Very dark green
   },
+
+  /**
+   * Android theme - Pastel orange gradient matching Material Design 3 Android theme
+   * Based on pastel orange base color #FFB74D
+   */
+  android: {
+    level0: '#FFF1DB', // Tone 95 - Very light peach (no contributions)
+    level1: '#FFDDAF', // Tone 90 - Pale orange (low contributions)
+    level2: '#FFB74D', // Tone 80 - Pastel orange base (moderate contributions)
+    level3: '#E1822C', // Tone 70 - Bright orange (high contributions)
+    level4: '#8E4800', // Tone 40 - Primary dark orange (very high contributions)
+  },
 };
 
 /**

@@ -1,14 +1,16 @@
 import { defaultTheme } from "./default";
 import { darkTheme } from "./dark";
 import { greenTheme } from "./green";
+import { androidTheme } from "./android";
 
 // Use a more flexible type that allows different literal values
-export type Theme = typeof defaultTheme | typeof darkTheme | typeof greenTheme;
+export type Theme = typeof defaultTheme | typeof darkTheme | typeof greenTheme | typeof androidTheme;
 
 export const themes = {
   default: defaultTheme,
   dark: darkTheme,
   green: greenTheme,
+  android: androidTheme,
 } as const satisfies Record<string, Theme>;
 
 export const defaultThemeName = "default";
