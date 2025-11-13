@@ -75,6 +75,7 @@ export const nlNL = {
       education: {
         title: "Opleiding",
       },
+      imageCaption: "Ik op de Preikestolen in Noorwegen",
     },
     projects: {
       title: "Projecten",

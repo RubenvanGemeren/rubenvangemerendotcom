@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import ClayCard from "./ClayCard";
 import type { Profile, Education } from "@/types/content";
 import { useI18n } from "@/lib/i18n-context";
@@ -16,21 +17,41 @@ export default function AboutPageContent({ profile, education }: AboutPageConten
   const translatedEducation = useTranslatedEducation(education);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="max-w-4xl"
-    >
-      <h1 className="text-3xl sm:text-4xl font-bold text-text mb-6 md:mb-8">{t("pages.about.title")}</h1>
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="mb-6 md:mb-8"
+      >
+        <h1 className="text-3xl sm:text-4xl font-bold text-text">{t("pages.about.title")}</h1>
+      </motion.div>
 
       <div className="space-y-6 md:space-y-8">
         <ClayCard className="p-4 md:p-6">
-          <h2 className="text-xl sm:text-2xl font-semibold text-text mb-3 md:mb-4">{t("pages.about.background.title")}</h2>
-          {/* <p className="text-text-subtle leading-relaxed mb-4">{profile.summary}</p> */}
-          <p className="text-sm md:text-base text-text-subtle leading-relaxed">
-            {t("pages.about.background.description")}
-          </p>
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+            <div className="flex-1">
+              <h2 className="text-xl sm:text-2xl font-semibold text-text mb-3 md:mb-4">{t("pages.about.background.title")}</h2>
+              {/* <p className="text-text-subtle leading-relaxed mb-4">{profile.summary}</p> */}
+              <p className="text-sm md:text-base text-text-subtle leading-relaxed">
+                {t("pages.about.background.description")}
+              </p>
+            </div>
+            <div className="flex-shrink-0 md:w-[25%] w-full">
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
+                <Image
+                  src="/data/resources/images/me-on-cliff.jpeg"
+                  alt={t("pages.about.imageCaption")}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+              </div>
+              <p className="text-xs md:text-sm text-text-subtle text-center italic mt-2">
+                {t("pages.about.imageCaption")}
+              </p>
+            </div>
+          </div>
         </ClayCard>
 
         <ClayCard className="p-4 md:p-6">
@@ -91,7 +112,7 @@ export default function AboutPageContent({ profile, education }: AboutPageConten
           </ClayCard>
         )}
       </div>
-    </motion.div>
+    </>
   );
 }
 

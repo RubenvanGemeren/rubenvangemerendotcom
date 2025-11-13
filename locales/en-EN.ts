@@ -2,7 +2,7 @@ export const enEN = {
   common: {
     name: "Ruben van Gemeren",
     title: "Full Stack Developer",
-    summary: "Recent graduate from KTH Royal Institute of Technology in Stockholm, Sweden. Specialized in Distributed Systems & Data Processing. Currently working as a Full Stack Developer at Spaux, building the first self-service portal for telecom management.",
+    summary: "Recent graduate from KTH Royal Institute of Technology in Stockholm, Sweden. Specialized in Distributed Systems & Data Processing. Currently working as a Full Stack Developer at Spaux, building a multi-tenant self-service portal for telecom management.",
     nav: {
       home: "Home",
       projects: "Projects",
@@ -75,6 +75,7 @@ export const enEN = {
       education: {
         title: "Education",
       },
+      imageCaption: "Me on the Preikestolen in Norway",
     },
     projects: {
       title: "Projects",

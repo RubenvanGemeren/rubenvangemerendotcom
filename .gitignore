@@ -35,3 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 rubenvangemeren.com.txt
+
+# images
+data/resources/images/me-on-cliff.jpeg
+public/data/resources/images/me-on-cliff.jpeg
