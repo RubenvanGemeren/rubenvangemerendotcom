@@ -6,6 +6,13 @@
   body {
     @apply bg-background text-text;
   }
+
+  /* Prevent horizontal scrolling on mobile */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
 }
 
 @layer utilities {
@@ -23,5 +30,33 @@
 .github-calendar-wrapper [data-loading],
 .github-calendar-wrapper [aria-busy="true"] {
   display: none !important;
+}
+
+/* Make GitHub calendar responsive and scale with container */
+.github-calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.github-calendar-wrapper > div {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Make the calendar SVG scale with container but respect its natural size */
+.github-calendar-wrapper svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure calendar doesn't overflow but maintains its aspect ratio */
+.github-calendar-wrapper [class*="calendar"],
+.github-calendar-wrapper [class*="Calendar"] {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 

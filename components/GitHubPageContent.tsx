@@ -17,16 +17,19 @@ export default function GitHubPageContent({ profile }: GitHubPageContentProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-w-6xl"
+      className="max-w-6xl w-full"
     >
-      <h1 className="text-4xl font-bold text-text mb-8">GitHub Activity</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-text mb-6 md:mb-8">GitHub Activity</h1>
 
-      <div className="space-y-8">
-        <GitHubActivity
-          githubUrl={profile.links.github}
-          showLabels={true}
-          showTotalContributions={true}
-        />
+      <div className="space-y-6 md:space-y-8">
+        <div className="overflow-x-auto">
+          <GitHubActivity
+            githubUrl={profile.links.github}
+            showLabels={true}
+            showTotalContributions={true}
+            className="min-w-0"
+          />
+        </div>
       </div>
     </motion.div>
   );

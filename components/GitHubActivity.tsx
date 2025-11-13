@@ -170,15 +170,17 @@ export default function GitHubActivity({
   }
 
   return (
-    <ClayCard className={`${compact ? 'p-4' : 'p-6'} ${className}`}>
+    <ClayCard className={`${compact ? 'py-4 sm:px-3' : 'p-6'} ${className}`}>
       <div
-        className="w-full github-calendar-wrapper"
+        className="w-full github-calendar-wrapper flex justify-center items-center"
         style={{ minHeight: compact ? '120px' : '200px' }}
       >
-        <GitHubCalendar
-          key={`${finalUsername}-${year || 'current'}-${themeName}`}
-          {...calendarProps}
-        />
+        <div className="w-full max-w-full overflow-hidden">
+          <GitHubCalendar
+            key={`${finalUsername}-${year || 'current'}-${themeName}`}
+            {...calendarProps}
+          />
+        </div>
       </div>
     </ClayCard>
   );

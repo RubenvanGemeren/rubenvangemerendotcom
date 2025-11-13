@@ -22,37 +22,37 @@ export default function ProjectDetailContent({ project }: ProjectDetailContentPr
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-text mb-3">{translatedProject.title}</h1>
-        <p className="text-xl text-text-subtle mb-6">{translatedProject.subtitle}</p>
-        <div className="flex flex-wrap gap-2 mb-8">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold text-text mb-2 md:mb-3">{translatedProject.title}</h1>
+        <p className="text-lg sm:text-xl text-text-subtle mb-4 md:mb-6">{translatedProject.subtitle}</p>
+        <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
           {translatedProject.tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-6">
-          <ClayCard className="p-6">
-            <h2 className="text-xl font-semibold text-text mb-4">{t("components.projectDetail.challenge")}</h2>
-            <p className="text-text-subtle leading-relaxed">{translatedProject.challenge}</p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="lg:col-span-2 space-y-4 md:space-y-6">
+          <ClayCard className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold text-text mb-3 md:mb-4">{t("components.projectDetail.challenge")}</h2>
+            <p className="text-sm md:text-base text-text-subtle leading-relaxed">{translatedProject.challenge}</p>
           </ClayCard>
 
-          <ClayCard className="p-6">
-            <h2 className="text-xl font-semibold text-text mb-4">{t("components.projectDetail.approach")}</h2>
-            <p className="text-text-subtle leading-relaxed">{translatedProject.approach}</p>
+          <ClayCard className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold text-text mb-3 md:mb-4">{t("components.projectDetail.approach")}</h2>
+            <p className="text-sm md:text-base text-text-subtle leading-relaxed">{translatedProject.approach}</p>
           </ClayCard>
 
-          <ClayCard className="p-6">
-            <h2 className="text-xl font-semibold text-text mb-4">{t("components.projectDetail.impact")}</h2>
-            <p className="text-text-subtle leading-relaxed">{translatedProject.impact}</p>
+          <ClayCard className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold text-text mb-3 md:mb-4">{t("components.projectDetail.impact")}</h2>
+            <p className="text-sm md:text-base text-text-subtle leading-relaxed">{translatedProject.impact}</p>
           </ClayCard>
         </div>
 
-        <div className="space-y-6">
-          <ClayCard className="p-6">
-            <h2 className="text-xl font-semibold text-text mb-4">{t("components.projectDetail.techStack")}</h2>
+        <div className="space-y-4 md:space-y-6">
+          <ClayCard className="p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold text-text mb-3 md:mb-4">{t("components.projectDetail.techStack")}</h2>
             <div className="flex flex-wrap gap-2">
               {translatedProject.techStack.map((tech) => (
                 <Tag key={tech}>{tech}</Tag>
@@ -61,9 +61,9 @@ export default function ProjectDetailContent({ project }: ProjectDetailContentPr
           </ClayCard>
 
           {translatedProject.metrics && (
-            <ClayCard className="p-6">
-              <h2 className="text-xl font-semibold text-text mb-4">{t("components.projectDetail.metrics")}</h2>
-              <div className="space-y-2 mb-4">
+            <ClayCard className="p-4 md:p-6">
+              <h2 className="text-lg md:text-xl font-semibold text-text mb-3 md:mb-4">{t("components.projectDetail.metrics")}</h2>
+              <div className="space-y-2 mb-3 md:mb-4">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-text-subtle">{t("components.projectDetail.before")}:</span>
                   <span className="text-sm font-semibold text-text">
@@ -94,8 +94,8 @@ export default function ProjectDetailContent({ project }: ProjectDetailContentPr
           )}
 
           {translatedProject.chartData && translatedProject.chartData.length > 0 && (
-            <ClayCard className="p-6">
-              <h2 className="text-xl font-semibold text-text mb-4">{t("components.projectDetail.visualization")}</h2>
+            <ClayCard className="p-4 md:p-6">
+              <h2 className="text-lg md:text-xl font-semibold text-text mb-3 md:mb-4">{t("components.projectDetail.visualization")}</h2>
               <MetricChart data={translatedProject.chartData} height={200} />
             </ClayCard>
           )}
