@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && VERCEL=1 npx @cloudflare/next-on-pages",
+    "build": "bash scripts/build.sh",
+    "next-build": "next build",
     "start": "next start",
     "lint": "next lint",
     "migrate": "tsx scripts/migrate.ts"
