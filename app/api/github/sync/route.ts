@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { syncGitHubData } from '@/lib/github/sync';
 
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     // Check for sync secret in header
