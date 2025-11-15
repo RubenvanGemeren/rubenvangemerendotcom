@@ -18,6 +18,7 @@ export const enEN = {
     ariaLabels: {
       selectLanguage: "Select language",
       selectTheme: "Select theme",
+      selectDateRange: "Select date range",
     },
     notFound: {
       title: "404",
@@ -32,6 +33,9 @@ export const enEN = {
   pages: {
     home: {
       featuredProjects: "Featured Projects",
+      github: {
+        seeMore: "See more",
+      },
       highlights: {
         highlight1: {
           title: "Distributed Stream Processing with CRDTs",
@@ -84,6 +88,54 @@ export const enEN = {
     experience: {
       title: "Experience",
       description: "Building scalable, reliable systems and data platforms at scale.",
+    },
+    github: {
+      title: "GitHub Activity",
+      syncNow: "Sync Now",
+      loadingStats: "Loading stats...",
+      dateRanges: {
+        "24h": "Last 24 Hours",
+        week: "Last Week",
+        month: "Last Month",
+        year: "Last Year",
+        all: "All Time",
+      },
+      stats: {
+        commits: "Commits",
+        issues: "Issues",
+        pullRequests: "Pull Requests",
+        repositories: "Repositories",
+        opened: "Opened",
+        closed: "Closed",
+        merged: "Merged",
+        totalReposWorkedOn: "Total repos worked on",
+        vsPreviousPeriod: "vs previous period",
+        noChange: "No change",
+      },
+      trends: {
+        commitsTrend: "Commits Trend",
+        issuesTrend: "Issues Trend",
+        pullRequestsTrend: "Pull Requests Trend",
+        hourly: "Hourly",
+        daily: "Daily",
+        monthly: "Monthly",
+        yearly: "Yearly",
+      },
+      sync: {
+        modal: {
+          title: "Enter Sync Code",
+          description: "Please enter the sync code to proceed with the GitHub data synchronization.",
+          syncCode: "Sync Code",
+          enterSyncCode: "Please enter the sync code",
+          cancel: "Cancel",
+          sync: "Sync",
+          syncing: "Syncing...",
+        },
+        success: "Sync completed! Added {commits} commits, {issues} issues, {prs} PRs.",
+        error: "Sync failed: {error}",
+        syncError: "Sync error: {error}",
+        unknownError: "Unknown error",
+      },
     },
   },
   data: {
