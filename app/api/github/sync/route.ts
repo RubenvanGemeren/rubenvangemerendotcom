@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { syncGitHubData } from '@/lib/github/sync';
 
-export const runtime = 'edge';
+// Use Node.js runtime for MongoDB compatibility
+export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
   try {

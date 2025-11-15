@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getGitHubStats } from '@/lib/github/stats';
 import type { DateRange } from '@/types/github';
 
-export const runtime = 'edge';
+// Use Node.js runtime for MongoDB compatibility
+export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
   try {
