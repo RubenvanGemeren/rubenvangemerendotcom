@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import ClayCard from "./ClayCard";
 import ProjectCard from "./ProjectCard";
 import GitHubActivity from "./GitHubActivity";
@@ -46,12 +47,7 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
           </div>
           {profile.links?.github && (
             <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
-              <a
-                href={profile.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block transition-transform hover:scale-[1.02] w-full max-w-sm sm:max-w-md lg:max-w-lg"
-              >
+              <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
                 <GitHubActivity
                   githubUrl={profile.links.github}
                   compact
@@ -59,9 +55,12 @@ export default function HomeContent({ profile, featuredProjects }: HomeContentPr
                   lastMonths={6}
                   showLabels={false}
                   showTotalContributions={false}
-                  className="max-w-full cursor-pointer"
+                  showSeeMore={true}
+                  seeMoreHref="/github"
+                  seeMoreText={t("pages.home.github.seeMore")}
+                  className="max-w-full"
                 />
-              </a>
+              </div>
             </div>
           )}
         </div>

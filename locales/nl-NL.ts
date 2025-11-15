@@ -18,6 +18,7 @@ export const nlNL = {
     ariaLabels: {
       selectLanguage: "Selecteer taal",
       selectTheme: "Selecteer thema",
+      selectDateRange: "Selecteer datumbereik",
     },
     notFound: {
       title: "404",
@@ -32,6 +33,9 @@ export const nlNL = {
   pages: {
     home: {
       featuredProjects: "Uitgelichte Projecten",
+      github: {
+        seeMore: "Meer zien",
+      },
       highlights: {
         highlight1: {
           title: "Gedistribueerde Streamverwerking met CRDTs",
@@ -84,6 +88,54 @@ export const nlNL = {
     experience: {
       title: "Ervaring",
       description: "Bouwen aan schaalbare, betrouwbare systemen en dataplatforms op schaal.",
+    },
+    github: {
+      title: "GitHub Activiteit",
+      syncNow: "Nu Synchroniseren",
+      loadingStats: "Statistieken laden...",
+      dateRanges: {
+        "24h": "Laatste 24 Uur",
+        week: "Laatste Week",
+        month: "Laatste Maand",
+        year: "Laatste Jaar",
+        all: "Alles",
+      },
+      stats: {
+        commits: "Commits",
+        issues: "Issues",
+        pullRequests: "Pull Requests",
+        repositories: "Repositories",
+        opened: "Geopend",
+        closed: "Gesloten",
+        merged: "Samengevoegd",
+        totalReposWorkedOn: "Totaal aantal repos waar aan gewerkt is",
+        vsPreviousPeriod: "vs vorige periode",
+        noChange: "Geen verandering",
+      },
+      trends: {
+        commitsTrend: "Commits Trend",
+        issuesTrend: "Issues Trend",
+        pullRequestsTrend: "Pull Requests Trend",
+        hourly: "Per Uur",
+        daily: "Dagelijks",
+        monthly: "Maandelijks",
+        yearly: "Jaarlijks",
+      },
+      sync: {
+        modal: {
+          title: "Voer Synchronisatiecode In",
+          description: "Voer de synchronisatiecode in om door te gaan met de GitHub gegevenssynchronisatie.",
+          syncCode: "Synchronisatiecode",
+          enterSyncCode: "Voer de synchronisatiecode in",
+          cancel: "Annuleren",
+          sync: "Synchroniseren",
+          syncing: "Synchroniseren...",
+        },
+        success: "Synchronisatie voltooid! {commits} commits, {issues} issues, {prs} PR's toegevoegd.",
+        error: "Synchronisatie mislukt: {error}",
+        syncError: "Synchronisatiefout: {error}",
+        unknownError: "Onbekende fout",
+      },
     },
   },
   data: {
