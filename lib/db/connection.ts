@@ -39,8 +39,20 @@ export async function getDb(): Promise<Db> {
     return db;
   }
 
+  // During build time, database may not be available
+  // Check if we're in a build context (no env vars) and throw a more graceful error
   const databaseName = process.env.MONGODB_DATABASE || 'github_stats';
-  const connectionString = getConnectionString();
+  let connectionString: string;
+  try {
+    connectionString = getConnectionString();
+  } catch (error) {
+    // If this is during build and env vars aren't available, throw a specific error
+    // that can be caught by the calling code
+    if (process.env.NEXT_PHASE === 'phase-production-build') {
+      throw new Error('Database not available during build time');
+    }
+    throw error;
+  }
 
   if (!client) {
     client = new MongoClient(connectionString, {
