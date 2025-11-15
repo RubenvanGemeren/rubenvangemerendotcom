@@ -1,33 +1,39 @@
 # Cloudflare Pages Deployment
 
-This Next.js application uses API routes and Server-Side Rendering (SSR), which requires special configuration for Cloudflare Pages.
+✅ **Already Configured!** This project is set up for Cloudflare Pages with automatic Git deployments.
 
-## Option 1: Use Cloudflare Next.js Adapter (Recommended)
+## Current Configuration
 
-1. Install the adapter:
-   ```bash
-   npm install --save-dev @cloudflare/next-on-pages
-   ```
+- ✅ Next.js 15.5.2 (compatible with Cloudflare adapter)
+- ✅ `@cloudflare/next-on-pages` adapter installed
+- ✅ Build script: `"build": "next build && npx @cloudflare/next-on-pages"`
+- ✅ Dynamic pages and API routes supported
 
-2. Update `package.json` build script:
-   ```json
-   "build": "next build && npx @cloudflare/next-on-pages"
-   ```
+## Quick Setup in Cloudflare Dashboard
 
-3. Configure Cloudflare Pages:
+1. **Connect Git Repository:**
+   - Go to Cloudflare Dashboard → Pages → Create project
+   - Connect your Git repository
+
+2. **Build Settings:**
    - Build command: `npm run build`
-   - Build output directory: `.vercel/output/static` (or check adapter docs for latest)
+   - Build output directory: `.vercel/output/static`
+   - Framework preset: Next.js (optional)
 
-## Option 2: Configure Cloudflare Pages Manually
+3. **Environment Variables** (add in Settings → Environment variables):
+   - `MONGODB_CONNECTION_STRING` (or `DB_ADMIN_USERNAME`, `DB_ADMIN_PASSWORD`, `MONGODB_CLUSTER`)
+   - `MONGODB_DATABASE`
+   - `GITHUB_USERNAME`
+   - `GITHUB_TOKEN`
+   - `SYNC_CODE`
 
-If you prefer not to use the adapter:
+4. **Enable Node.js Compatibility:**
+   - Settings → Functions → Compatibility flags
+   - Add: `nodejs_compat`
 
-1. In Cloudflare Pages dashboard:
-   - Build command: `npm run build`
-   - Build output directory: `.next` (not `out`)
-   - Framework preset: Next.js
+5. **Deploy!** Cloudflare will auto-deploy on every Git push.
 
-2. Note: API routes may not work without the adapter. Consider using Cloudflare Workers for API routes instead.
+See `CLOUDFLARE_PAGES_SETUP.md` for detailed step-by-step instructions.
 
 ## Environment Variables
 

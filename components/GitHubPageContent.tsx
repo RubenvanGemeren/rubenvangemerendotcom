@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import GitHubActivity from "./GitHubActivity";
 import GitHubStatsCard from "./GitHubStatsCard";
 import GitHubTrendChart from "./GitHubTrendChart";
@@ -78,6 +78,20 @@ export default function GitHubPageContent({ profile, initialStats }: GitHubPageC
     setDateRange(range);
     fetchStats(range);
   }, [fetchStats]);
+
+  // Note: With SSR, initialStats should already be populated
+  // Only fetch if we detect empty stats (fallback for build-time)
+  useEffect(() => {
+    const isEmpty =
+      initialStats.commits === 0 &&
+      initialStats.issuesOpened === 0 &&
+      initialStats.prsOpened === 0 &&
+      initialStats.commitsTrend.length === 0;
+
+    if (isEmpty) {
+      fetchStats(dateRange);
+    }
+  }, [dateRange, fetchStats, initialStats]);
 
   const handleSyncButtonClick = () => {
     setSyncError(null);

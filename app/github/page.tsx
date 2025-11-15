@@ -4,6 +4,7 @@ import GitHubPageContent from "@/components/GitHubPageContent";
 import { getProfile } from "@/lib/content";
 import { getGitHubStats } from "@/lib/github/stats";
 
+// Server-side rendered page - works with Cloudflare Pages adapter
 export default async function GitHubPage() {
   const profile = getProfile();
   // Fetch initial stats with default "week" range for SSR
