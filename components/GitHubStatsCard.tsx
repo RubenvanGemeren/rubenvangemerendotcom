@@ -13,7 +13,7 @@ interface GitHubStatsCardProps {
   comparison?: ComparisonData | null;
 }
 
-function formatComparison(comparison: ComparisonData | null, t: (key: string) => string): { text: string; color: string } | null {
+function formatComparison(comparison: ComparisonData | null | undefined, t: (key: string) => string): { text: string; color: string } | null {
   if (!comparison) return null;
 
   const diff = comparison.value;

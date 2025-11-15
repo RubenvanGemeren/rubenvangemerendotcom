@@ -237,8 +237,8 @@ export async function syncGitHubData(): Promise<SyncResult> {
         const [owner, repo] = repoParts;
 
         if (event.type === 'IssuesEvent') {
-          const issue = event.payload.issue;
-          if (issue && issue.number) {
+          const issue = event.payload.issue as any;
+          if (issue && typeof issue === 'object' && 'number' in issue && typeof issue.number === 'number') {
             await insertIssue({
               repo_owner: owner,
               repo_name: repo,
@@ -250,8 +250,8 @@ export async function syncGitHubData(): Promise<SyncResult> {
             result.issuesAdded++;
           }
         } else if (event.type === 'PullRequestEvent') {
-          const pr = event.payload.pull_request;
-          if (pr && pr.number) {
+          const pr = event.payload.pull_request as any;
+          if (pr && typeof pr === 'object' && 'number' in pr && typeof pr.number === 'number') {
             let state: 'opened' | 'closed' | 'merged' = 'opened';
             if (pr.merged) {
               state = 'merged';
