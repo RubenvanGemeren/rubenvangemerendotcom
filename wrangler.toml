@@ -1,0 +1,18 @@
+name = "personal-website"
+main = "workers-site/index.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+type = "javascript"
+
+# Durable Objects binding
+[durable_objects]
+bindings = [
+  { name = "MONGO_DO", class_name = "MongoDO", script_name = "mongo-do" }
+]
+
+# Pages configuration
+pages_build_output_dir = "out"
+
+# Note: For Pages Functions, the durable object class must be defined in a Worker script
+# You may need to create a separate worker script that exports the DO class
+# or configure this differently depending on your Pages setup

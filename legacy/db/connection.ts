@@ -1,3 +1,10 @@
+/**
+ * @deprecated This file is archived. Database access has been migrated to Cloudflare Pages Functions
+ * using MongoDB Atlas Data API (HTTP). See functions/_lib/mongodbDataApi.js and functions/api/github/*.js
+ *
+ * This file is kept for reference only. It will not be used in production.
+ */
+
 import { MongoClient, Db, Document } from 'mongodb';
 
 let client: MongoClient | null = null;
@@ -100,3 +107,4 @@ export async function getCollection<T extends Document = Document>(collectionNam
   const database = await getDb();
   return database.collection<T>(collectionName);
 }
+

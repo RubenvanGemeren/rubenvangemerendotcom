@@ -2,39 +2,34 @@ import Layout from "@/components/Layout";
 import Section from "@/components/Section";
 import GitHubPageContent from "@/components/GitHubPageContent";
 import { getProfile } from "@/lib/content";
-import { getGitHubStats } from "@/lib/github/stats";
+import type { GitHubStats } from "@/types/github";
 
 // Server-side rendered page - works with Cloudflare Pages adapter
+// During SSR/build, we return empty stats and let client-side fetch handle data loading
+// This ensures the page renders even when API is unavailable during build
 export default async function GitHubPage() {
   const profile = getProfile();
-  // Fetch initial stats with default "week" range for SSR
-  // During build time, database may not be available, so catch errors gracefully
-  let stats;
-  try {
-    stats = await getGitHubStats('week');
-  } catch (error) {
-    // During build or if DB is unavailable, return empty stats
-    // The page will still render and can fetch data client-side
-    stats = {
-      commits: 0,
-      issuesOpened: 0,
-      issuesClosed: 0,
-      prsOpened: 0,
-      prsClosed: 0,
-      prsMerged: 0,
-      totalRepos: 0,
-      commitsTrend: [],
-      issuesTrend: [],
-      prsTrend: [],
-      dateRange: 'week' as const,
-      commitsComparison: null,
-      issuesOpenedComparison: null,
-      issuesClosedComparison: null,
-      prsOpenedComparison: null,
-      prsClosedComparison: null,
-      prsMergedComparison: null,
-    };
-  }
+  // Return empty stats for SSR - client-side will fetch actual data
+  // This ensures the page renders during build time when API may not be available
+  const stats: GitHubStats = {
+    commits: 0,
+    issuesOpened: 0,
+    issuesClosed: 0,
+    prsOpened: 0,
+    prsClosed: 0,
+    prsMerged: 0,
+    totalRepos: 0,
+    commitsTrend: [],
+    issuesTrend: [],
+    prsTrend: [],
+    dateRange: 'week' as const,
+    commitsComparison: null,
+    issuesOpenedComparison: null,
+    issuesClosedComparison: null,
+    prsOpenedComparison: null,
+    prsClosedComparison: null,
+    prsMergedComparison: null,
+  };
 
   return (
     <Layout>

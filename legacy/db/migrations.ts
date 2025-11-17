@@ -1,3 +1,10 @@
+/**
+ * @deprecated This file is archived. Database access has been migrated to Cloudflare Pages Functions
+ * using MongoDB Atlas Data API (HTTP). See functions/_lib/mongodbDataApi.js and functions/api/github/*.js
+ *
+ * This file is kept for reference only. It will not be used in production.
+ */
+
 import { getDb } from './connection';
 import { ensureIndexes, checkCollectionsExist, COLLECTIONS } from './schema';
 
@@ -38,3 +45,4 @@ export async function runMigrations(): Promise<void> {
 export async function checkTablesExist(): Promise<boolean> {
   return await checkCollectionsExist();
 }
+

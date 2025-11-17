@@ -292,7 +292,183 @@ The project uses strict TypeScript. All content types are defined in `types/cont
 
 ## Deployment
 
-### Vercel (Recommended)
+### Cloudflare Pages (Edge-first MongoDB with Durable Objects)
+
+This project uses **Cloudflare Pages Functions** with **Durable Objects** for MongoDB database access. The static frontend is served from Cloudflare Pages, while dynamic API endpoints run as serverless functions that communicate with a Durable Object that maintains a persistent MongoDB connection.
+
+#### Prerequisites
+
+1. **MongoDB Atlas Account**
+   - Create a MongoDB Atlas cluster
+   - Get your connection string (MongoDB URI)
+   - Note your database name
+
+2. **Cloudflare Pages Account**
+   - Connect your GitHub repository
+   - Set up a new Pages project
+   - Access to Workers/Pages plan that supports Durable Objects
+
+#### Create / Configure Durable Object
+
+1. **Add the Durable Object class** to your repository:
+   - The `MongoDO` class is defined in `durable-objects/MongoDO.ts`
+   - This class manages a single MongoDB client connection per DO instance
+
+2. **Create Durable Object namespace** in Cloudflare:
+   - Go to your Cloudflare Workers dashboard
+   - Create a new Durable Object namespace (e.g., `MONGO_DO`)
+   - Note the namespace binding name
+
+3. **Bind Durable Object to Pages project**:
+   - In your Pages project settings → **Functions** → **Durable Objects**
+   - Bind the namespace to your Pages project
+   - The binding name should match `MONGO_DO` (as used in `wrangler.toml`)
+
+#### Environment Variables / Secrets
+
+Add the following **secrets** in your Cloudflare Pages project settings:
+
+1. Go to your Pages project → **Settings** → **Environment Variables**
+2. Add the following secrets (mark as "Encrypted" / "Secret"):
+
+   ```
+   MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+   MONGODB_DATABASE=github_stats
+   MONGODB_DEFAULT_COLLECTION=posts
+   GITHUB_USERNAME=your-github-username
+   GITHUB_TOKEN=your-github-personal-access-token
+   SYNC_SECRET=your-sync-secret-key
+   ```
+
+   Optional:
+   ```
+   GITHUB_PRIVATE_OWNER=optional-private-repo-owner
+   GITHUB_PRIVATE_REPO=optional-private-repo-name
+   ```
+
+   **Important**: The Durable Object will also need access to these environment variables. Ensure they are available to both Pages Functions and the Durable Object.
+
+#### Enable Node Compatibility
+
+The MongoDB driver requires Node.js compatibility:
+
+1. Ensure `wrangler.toml` includes:
+   ```toml
+   compatibility_flags = ["nodejs_compat"]
+   compatibility_date = "2024-01-01"
+   ```
+
+2. In Cloudflare Pages settings, ensure Node.js compatibility is enabled for Functions.
+
+#### Deployment Steps
+
+1. **Push code to GitHub** (the repository connected to Cloudflare Pages)
+
+2. **Configure Build Settings** in Cloudflare Pages:
+   - **Build command**: `npm run build`
+   - **Build output directory**: `out` (or `.next` depending on your Next.js config)
+   - **Root directory**: `/` (or your project root)
+
+3. **Deploy**: Cloudflare Pages will automatically build and deploy on push
+
+4. **Verify Functions**: The `functions/` directory is automatically deployed. Endpoints are available at:
+   - `https://your-site.pages.dev/api/github/stats`
+   - `https://your-site.pages.dev/api/github/sync`
+   - `https://your-site.pages.dev/api/posts` (example endpoint)
+
+#### Testing the Deployment
+
+After deployment, test the endpoints:
+
+**Test Stats Endpoint:**
+```bash
+curl https://your-site.pages.dev/api/github/stats?dateRange=week
+```
+
+**Test Sync Endpoint:**
+```bash
+curl -X POST https://your-site.pages.dev/api/github/sync \
+  -H "Content-Type: application/json" \
+  -H "x-sync-secret: your-sync-secret-key"
+```
+
+**Test Posts Endpoint (example):**
+```bash
+curl https://your-site.pages.dev/api/posts?limit=10
+```
+
+**Create a Post:**
+```bash
+curl -X POST https://your-site.pages.dev/api/posts/create \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Test Post","content":"This is a test"}'
+```
+
+Expected responses:
+- **Stats**: Returns JSON with commits, issues, PRs, trends, etc.
+- **Sync**: Returns `{"success": true, "result": {...}}` with counts of added items
+- **Posts**: Returns array of posts or single post by ID
+
+#### Local Development
+
+To test Pages Functions locally with Durable Objects:
+
+1. **Install Wrangler CLI**:
+   ```bash
+   npm install -g wrangler
+   ```
+
+2. **Configure `wrangler.toml`** (already included in the repo):
+   - Ensure Durable Object bindings are configured
+   - Set `compatibility_flags = ["nodejs_compat"]`
+
+3. **Run local dev server**:
+   ```bash
+   npx wrangler pages dev out --compatibility-date=2024-01-01 --compatibility-flags=nodejs_compat
+   ```
+
+4. **Set environment variables** for local testing (create `.dev.vars` file):
+   ```
+   MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+   MONGODB_DATABASE=github_stats
+   MONGODB_DEFAULT_COLLECTION=posts
+   GITHUB_USERNAME=your-username
+   GITHUB_TOKEN=your-token
+   SYNC_SECRET=your-secret
+   ```
+
+#### Architecture Notes
+
+- **Static Pages**: Served directly from Cloudflare Pages CDN
+- **API Endpoints**: Run as Cloudflare Pages Functions (serverless)
+- **Database Access**: Uses Durable Object (`MongoDO`) that maintains a single MongoDB client connection
+- **Why Durable Objects?**: Cloudflare Pages Functions don't support persistent TCP connections per-request. Durable Objects enable connection reuse by maintaining stateful connections in a single DO instance (using `idFromName("global")` for a named instance)
+- **Connection Reuse**: The DO uses a single named instance to maximize connection reuse and reduce connection overhead
+
+#### Observability
+
+- Monitor DO logs and function logs in Cloudflare dashboard
+- Watch connection establishment/teardown in DO logs
+- Monitor function execution time and DO response times
+
+#### Notes / Caveats
+
+- **Durable Object Lifecycle**: Durable Objects have a lifecycle; we use `idFromName("global")` to create a single named instance for connection reuse
+- **Connection Pooling**: Tune `maxPoolSize` in the MongoClient options (in `MongoDO.js`) based on your traffic patterns
+- **High Throughput**: For very high throughput, consider a connection pooling layer or dedicated backend
+- **ObjectId Handling**: The DO converts `{ _id: { $oid: "..." } }` format to native ObjectId, but also accepts plain string IDs
+
+#### Troubleshooting
+
+- **Functions not working**: Check that `functions/` directory is in the project root
+- **Database errors**: Verify MongoDB URI and credentials are correct
+- **DO binding errors**: Ensure Durable Object namespace is created and bound correctly
+- **Node compatibility**: Ensure `nodejs_compat` flag is enabled
+- **CORS issues**: Functions include CORS headers, but check browser console for specific errors
+- **Build failures**: Ensure all environment variables are set in Cloudflare Pages settings
+- **Connection errors**: Check MongoDB Atlas network access settings (allow Cloudflare IPs or use 0.0.0.0/0 for testing)
+
+### Vercel (Alternative)
 
 1. Push your code to GitHub
 2. Import project in Vercel

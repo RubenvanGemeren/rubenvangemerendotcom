@@ -1,4 +1,15 @@
+/**
+ * @deprecated This file is deprecated. Database access has been migrated to Cloudflare Pages Functions
+ * using MongoDB Atlas Data API. See functions/api/github/sync.js
+ *
+ * This function is kept for backward compatibility but should not be used in new code.
+ * Use the API endpoint /api/github/sync instead.
+ */
+
+// Legacy imports - these files have been moved to legacy/db/
+// @ts-ignore - Deprecated, keeping for reference
 import { getCollection } from '@/lib/db/connection';
+// @ts-ignore - Deprecated, keeping for reference
 import { COLLECTIONS } from '@/lib/db/schema';
 import { decrypt } from '@/lib/encryption';
 import {
