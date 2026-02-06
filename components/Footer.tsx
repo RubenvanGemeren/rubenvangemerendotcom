@@ -39,14 +39,6 @@ export default function Footer({ profile }: FooterProps) {
                 {t("common.links.linkedin")}
               </Link>
             )}
-            {profile.links.email && (
-              <Link
-                href={`mailto:${profile.links.email}`}
-                className="text-sm text-text-subtle hover:text-primary transition-colors"
-              >
-                {t("common.links.email")}
-              </Link>
-            )}
           </div>
         </div>
       </div>
