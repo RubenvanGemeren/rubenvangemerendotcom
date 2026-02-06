@@ -2,17 +2,29 @@ import { MongoClient, Db, Document } from 'mongodb';
 
 function getConnectionString(): string {
   // Option 1: Use full connection string if provided (easiest)
-  if (process.env.MONGODB_CONNECTION_STRING) {
-    return process.env.MONGODB_CONNECTION_STRING;
+  const connStr = process.env.MONGODB_CONNECTION_STRING?.trim();
+  if (connStr) {
+    if (!connStr.startsWith('mongodb://') && !connStr.startsWith('mongodb+srv://')) {
+      throw new Error(
+        `MONGODB_CONNECTION_STRING has invalid scheme (starts with "${connStr.substring(0, 20)}..."). ` +
+        'Expected it to start with "mongodb://" or "mongodb+srv://".'
+      );
+    }
+    return connStr;
   }
 
   // Option 2: Build connection string from parts
-  const username = process.env.DB_ADMIN_USERNAME;
-  const password = process.env.DB_ADMIN_PASSWORD;
-  const cluster = process.env.MONGODB_CLUSTER || 'rubenvangemerendotcom-cluster';
+  const username = process.env.DB_ADMIN_USERNAME?.trim();
+  const password = process.env.DB_ADMIN_PASSWORD?.trim();
+  const cluster = (process.env.MONGODB_CLUSTER || 'rubenvangemerendotcom-cluster').trim();
 
   if (!username || !password) {
-    throw new Error('Missing required database environment variables. Either provide MONGODB_CONNECTION_STRING or both DB_ADMIN_USERNAME and DB_ADMIN_PASSWORD');
+    throw new Error(
+      'Missing required database environment variables. ' +
+      'Either provide MONGODB_CONNECTION_STRING or both DB_ADMIN_USERNAME and DB_ADMIN_PASSWORD. ' +
+      `Currently set: MONGODB_CONNECTION_STRING=${connStr ? 'yes' : 'no'}, ` +
+      `DB_ADMIN_USERNAME=${username ? 'yes' : 'no'}, DB_ADMIN_PASSWORD=${password ? 'yes' : 'no'}`
+    );
   }
 
   // URL encode password to handle special characters
