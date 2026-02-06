@@ -56,8 +56,13 @@ export async function getDb(): Promise<Db> {
 
   if (!client) {
     client = new MongoClient(connectionString, {
-      maxPoolSize: 10,
-      minPoolSize: 2,
+      // Reduced pool sizes for edge/serverless environments (Cloudflare Workers)
+      // where connections are short-lived and resources are limited
+      maxPoolSize: 5,
+      minPoolSize: 1,
+      // Shorter timeouts for serverless cold starts
+      serverSelectionTimeoutMS: 10000,
+      connectTimeoutMS: 10000,
     });
 
     try {

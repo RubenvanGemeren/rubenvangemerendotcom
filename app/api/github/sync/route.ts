@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     // Check for sync secret in header
     const syncSecret = request.headers.get('x-sync-secret');
-    const expectedSecret = process.env.SYNC_SECRET;
+    const expectedSecret = process.env.SYNC_CODE;
 
     if (!expectedSecret) {
       return NextResponse.json(
