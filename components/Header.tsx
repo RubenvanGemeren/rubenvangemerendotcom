@@ -44,6 +44,7 @@ export default function Header() {
               <NavLink href="/">{t("common.nav.home")}</NavLink>
               <NavLink href="/projects">{t("common.nav.projects")}</NavLink>
               <NavLink href="/experience">{t("common.nav.experience")}</NavLink>
+              <NavLink href="/blog">{t("common.nav.blog")}</NavLink>
               <NavLink href="/about">{t("common.nav.about")}</NavLink>
             </nav>
             <LanguageSelector />
@@ -93,6 +94,9 @@ export default function Header() {
             </NavLink>
             <NavLink href="/experience" onClick={closeMobileMenu} className="py-2">
               {t("common.nav.experience")}
+            </NavLink>
+            <NavLink href="/blog" onClick={closeMobileMenu} className="py-2">
+              {t("common.nav.blog")}
             </NavLink>
             <NavLink href="/about" onClick={closeMobileMenu} className="py-2">
               {t("common.nav.about")}
