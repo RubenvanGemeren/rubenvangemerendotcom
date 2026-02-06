@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "bash scripts/build.sh",
-    "next-build": "next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "migrate": "tsx scripts/migrate.ts",
@@ -27,7 +26,6 @@
     "recharts": "^2.12.7"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.16",
     "@types/node": "^20.14.12",
     "@types/node-cron": "^3.0.11",
     "@types/react": "^18.3.3",
