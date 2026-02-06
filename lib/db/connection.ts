@@ -21,11 +21,41 @@ function getConnectionString(): string {
   return `mongodb+srv://${username}:${encodedPassword}@${cluster}.mongodb.net/?retryWrites=true&w=majority`;
 }
 
-// In Cloudflare Workers, connections should not be reused across requests.
-// Create a new client per request. For Node.js environments (local dev),
-// we can still cache the client for the duration of the process.
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
+
+async function connectWithRetry(connectionString: string, maxRetries: number = 2): Promise<MongoClient> {
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const client = new MongoClient(connectionString, {
+      // Single connection for serverless — no pool reuse across requests
+      maxPoolSize: 1,
+      minPoolSize: 0,
+      maxIdleTimeMS: 10000,
+      // Timeouts tuned for Cloudflare Workers (30s CPU limit)
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      socketTimeoutMS: 15000,
+    });
+
+    try {
+      await client.connect();
+      return client;
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+      // Close the failed client before retrying
+      try { await client.close(); } catch { /* ignore */ }
+
+      if (attempt < maxRetries) {
+        // Brief pause before retry
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+  }
+
+  throw lastError || new Error('Failed to connect to MongoDB after retries');
+}
 
 export async function getDb(): Promise<Db> {
   // During build time, database is not available
@@ -33,41 +63,17 @@ export async function getDb(): Promise<Db> {
     throw new Error('Database not available during build time');
   }
 
-  // In non-Worker environments (local dev), reuse the cached connection
-  if (cachedDb) {
+  // Reuse cached connection if available and still alive
+  if (cachedDb && cachedClient) {
     return cachedDb;
   }
 
   const databaseName = process.env.MONGODB_DATABASE || 'github_stats';
   const connectionString = getConnectionString();
 
-  const client = new MongoClient(connectionString, {
-    // Minimal pool for serverless/Workers environments
-    maxPoolSize: 3,
-    minPoolSize: 0,
-    // Shorter timeouts for serverless cold starts
-    serverSelectionTimeoutMS: 10000,
-    connectTimeoutMS: 10000,
-  });
-
-  try {
-    await client.connect();
-  } catch (error) {
-    if (error instanceof Error && error.message.includes('ENOTFOUND')) {
-      throw new Error(
-        `Failed to connect to MongoDB cluster. Please verify:\n` +
-        `1. The cluster name/connection string is correct\n` +
-        `2. The cluster exists in MongoDB Atlas\n` +
-        `3. Your network allows connections to MongoDB Atlas\n` +
-        `Original error: ${error.message}`
-      );
-    }
-    throw error;
-  }
-
+  const client = await connectWithRetry(connectionString);
   const db = client.db(databaseName);
 
-  // Cache for local dev (Node.js), but in Workers each invocation is isolated
   cachedClient = client;
   cachedDb = db;
 

@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getGitHubStats } from '@/lib/github/stats';
 import type { DateRange } from '@/types/github';
 
+// Timeout wrapper to prevent hanging Workers
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error(`Request timed out after ${ms}ms`)), ms)
+    ),
+  ]);
+}
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -11,7 +21,8 @@ export async function GET(request: NextRequest) {
     const validRanges: DateRange[] = ['24h', 'week', 'month', 'year', 'all'];
     const validDateRange = validRanges.includes(dateRange) ? dateRange : 'week';
 
-    const stats = await getGitHubStats(validDateRange);
+    // 25s timeout to stay within Cloudflare Workers' 30s CPU limit
+    const stats = await withTimeout(getGitHubStats(validDateRange), 25000);
     return NextResponse.json(stats);
   } catch (error) {
     console.error('Error fetching stats:', error);
