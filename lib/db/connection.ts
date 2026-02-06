@@ -1,14 +1,8 @@
 import { MongoClient, Db, Document } from 'mongodb';
 
-let client: MongoClient | null = null;
-let db: Db | null = null;
-
 function getConnectionString(): string {
   // Option 1: Use full connection string if provided (easiest)
   if (process.env.MONGODB_CONNECTION_STRING) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Using MONGODB_CONNECTION_STRING from environment');
-    }
     return process.env.MONGODB_CONNECTION_STRING;
   }
 
@@ -24,79 +18,67 @@ function getConnectionString(): string {
   // URL encode password to handle special characters
   const encodedPassword = encodeURIComponent(password);
 
-  const connectionString = `mongodb+srv://${username}:${encodedPassword}@${cluster}.mongodb.net/?retryWrites=true&w=majority`;
-
-  // Log connection info (without password) for debugging (dev only)
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(`Connecting to MongoDB cluster: ${cluster}`);
-  }
-
-  return connectionString;
+  return `mongodb+srv://${username}:${encodedPassword}@${cluster}.mongodb.net/?retryWrites=true&w=majority`;
 }
 
+// In Cloudflare Workers, connections should not be reused across requests.
+// Create a new client per request. For Node.js environments (local dev),
+// we can still cache the client for the duration of the process.
+let cachedClient: MongoClient | null = null;
+let cachedDb: Db | null = null;
+
 export async function getDb(): Promise<Db> {
-  if (db) {
-    return db;
+  // During build time, database is not available
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    throw new Error('Database not available during build time');
   }
 
-  // During build time, database may not be available
-  // Check if we're in a build context (no env vars) and throw a more graceful error
+  // In non-Worker environments (local dev), reuse the cached connection
+  if (cachedDb) {
+    return cachedDb;
+  }
+
   const databaseName = process.env.MONGODB_DATABASE || 'github_stats';
-  let connectionString: string;
+  const connectionString = getConnectionString();
+
+  const client = new MongoClient(connectionString, {
+    // Minimal pool for serverless/Workers environments
+    maxPoolSize: 3,
+    minPoolSize: 0,
+    // Shorter timeouts for serverless cold starts
+    serverSelectionTimeoutMS: 10000,
+    connectTimeoutMS: 10000,
+  });
+
   try {
-    connectionString = getConnectionString();
+    await client.connect();
   } catch (error) {
-    // If this is during build and env vars aren't available, throw a specific error
-    // that can be caught by the calling code
-    if (process.env.NEXT_PHASE === 'phase-production-build') {
-      throw new Error('Database not available during build time');
+    if (error instanceof Error && error.message.includes('ENOTFOUND')) {
+      throw new Error(
+        `Failed to connect to MongoDB cluster. Please verify:\n` +
+        `1. The cluster name/connection string is correct\n` +
+        `2. The cluster exists in MongoDB Atlas\n` +
+        `3. Your network allows connections to MongoDB Atlas\n` +
+        `Original error: ${error.message}`
+      );
     }
     throw error;
   }
 
-  if (!client) {
-    client = new MongoClient(connectionString, {
-      // Reduced pool sizes for edge/serverless environments (Cloudflare Workers)
-      // where connections are short-lived and resources are limited
-      maxPoolSize: 5,
-      minPoolSize: 1,
-      // Shorter timeouts for serverless cold starts
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS: 10000,
-    });
+  const db = client.db(databaseName);
 
-    try {
-      await client.connect();
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Connected to MongoDB Atlas');
-      }
-    } catch (error) {
-      if (error instanceof Error && error.message.includes('ENOTFOUND')) {
-        throw new Error(
-          `Failed to connect to MongoDB cluster "${process.env.MONGODB_CLUSTER || 'rubenvangemerendotcom-cluster'}". ` +
-          `Please verify:\n` +
-          `1. The cluster name is correct in your .env.local file (MONGODB_CLUSTER)\n` +
-          `2. The cluster exists in MongoDB Atlas\n` +
-          `3. Your network allows connections to MongoDB Atlas\n` +
-          `Original error: ${error.message}`
-        );
-      }
-      throw error;
-    }
-  }
+  // Cache for local dev (Node.js), but in Workers each invocation is isolated
+  cachedClient = client;
+  cachedDb = db;
 
-  db = client.db(databaseName);
   return db;
 }
 
 export async function closeDb(): Promise<void> {
-  if (client) {
-    await client.close();
-    client = null;
-    db = null;
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Disconnected from MongoDB');
-    }
+  if (cachedClient) {
+    await cachedClient.close();
+    cachedClient = null;
+    cachedDb = null;
   }
 }
 

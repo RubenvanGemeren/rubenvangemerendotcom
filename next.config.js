@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Externalize mongodb so Next.js doesn't bundle it into the edge runtime.
+  // It will be resolved at runtime in Cloudflare Workers (with nodejs_compat).
+  serverExternalPackages: ["mongodb"],
 }
 
 module.exports = nextConfig
