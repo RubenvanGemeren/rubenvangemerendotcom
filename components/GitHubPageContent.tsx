@@ -74,6 +74,12 @@ export default function GitHubPageContent({ profile, initialStats }: GitHubPageC
     }
   }, []);
 
+  // Fetch fresh stats on mount — the page is statically generated with empty
+  // stats at build time (DB not available), so we always need a client-side fetch.
+  useEffect(() => {
+    fetchStats(dateRange);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleDateRangeChange = useCallback((range: DateRange) => {
     setDateRange(range);
     fetchStats(range);
