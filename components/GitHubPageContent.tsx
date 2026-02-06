@@ -52,7 +52,7 @@ export default function GitHubPageContent({ profile, initialStats }: GitHubPageC
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
   const [stats, setStats] = useState<GitHubStats>(initialStats);
-  const [dateRange, setDateRange] = useState<DateRange>(initialStats.dateRange || 'week');
+  const [dateRange, setDateRange] = useState<DateRange>(initialStats.dateRange || 'all');
   const [isLoading, setIsLoading] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [syncError, setSyncError] = useState<string | null>(null);

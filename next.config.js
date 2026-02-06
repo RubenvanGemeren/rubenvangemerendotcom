@@ -6,21 +6,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  webpack: (config, { isServer }) => {
-    // Externalize MongoDB for Edge Runtime compatibility
-    // MongoDB requires Node.js runtime and cannot run in Edge Runtime
-    if (isServer) {
-      config.externals = config.externals || [];
-      config.externals.push({
-        'mongodb': 'commonjs mongodb',
-        'mongodb/lib/client-side-encryption/auto_encrypter': 'commonjs mongodb/lib/client-side-encryption/auto_encrypter',
-        'mongodb/lib/client-side-encryption/mongocryptd_manager': 'commonjs mongodb/lib/client-side-encryption/mongocryptd_manager',
-        'mongodb/lib/client-side-encryption/state_machine': 'commonjs mongodb/lib/client-side-encryption/state_machine',
-      });
-    }
-    return config;
-  },
+  // Externalize mongodb so Next.js doesn't bundle it into the edge runtime.
+  // It will be resolved at runtime in Cloudflare Workers (with nodejs_compat).
+  serverExternalPackages: ["mongodb"],
 }
 
 module.exports = nextConfig
+
+// Initialize OpenNext Cloudflare adapter for local development
+const { initOpenNextCloudflareForDev } = require("@opennextjs/cloudflare");
+initOpenNextCloudflareForDev();
 

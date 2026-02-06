@@ -7,11 +7,11 @@ import { getGitHubStats } from "@/lib/github/stats";
 // Server-side rendered page - works with Cloudflare Pages adapter
 export default async function GitHubPage() {
   const profile = getProfile();
-  // Fetch initial stats with default "week" range for SSR
+  // Fetch initial stats with default "all" range for SSR
   // During build time, database may not be available, so catch errors gracefully
   let stats;
   try {
-    stats = await getGitHubStats('week');
+    stats = await getGitHubStats('all');
   } catch (error) {
     // During build or if DB is unavailable, return empty stats
     // The page will still render and can fetch data client-side
@@ -26,7 +26,7 @@ export default async function GitHubPage() {
       commitsTrend: [],
       issuesTrend: [],
       prsTrend: [],
-      dateRange: 'week' as const,
+      dateRange: 'all' as const,
       commitsComparison: null,
       issuesOpenedComparison: null,
       issuesClosedComparison: null,

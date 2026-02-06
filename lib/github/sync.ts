@@ -1,6 +1,5 @@
 import { getCollection } from '@/lib/db/connection';
 import { COLLECTIONS } from '@/lib/db/schema';
-import { decrypt } from '@/lib/encryption';
 import {
   fetchUserPublicEvents,
   fetchRepoEvents,
