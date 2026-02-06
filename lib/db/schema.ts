@@ -5,6 +5,7 @@ export const COLLECTIONS = {
   COMMITS: 'github_commits',
   ISSUES: 'github_issues',
   PULL_REQUESTS: 'github_pull_requests',
+  BLOG_POSTS: 'blog_posts',
 } as const;
 
 export interface IndexDefinition {
