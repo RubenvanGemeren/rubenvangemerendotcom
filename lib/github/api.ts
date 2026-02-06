@@ -18,7 +18,9 @@ async function fetchWithAuth(
   };
 
   if (options.token) {
-    headers['Authorization'] = `token ${options.token}`;
+    // Support both classic tokens (ghp_) and fine-grained tokens (github_pat_)
+    const prefix = options.token.startsWith('github_pat_') ? 'Bearer' : 'token';
+    headers['Authorization'] = `${prefix} ${options.token}`;
   }
 
   const queryParams = new URLSearchParams();
