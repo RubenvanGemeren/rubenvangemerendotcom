@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { syncGitHubData } from '@/lib/github/sync';
 
+// Edge Runtime required by @cloudflare/next-on-pages adapter
+// Note: MongoDB operations should be moved to a separate Cloudflare Worker
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     // Check for sync secret in header

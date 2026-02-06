@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getGitHubStats } from '@/lib/github/stats';
 import type { DateRange } from '@/types/github';
 
+// Edge Runtime required by @cloudflare/next-on-pages adapter
+// Note: MongoDB operations should be moved to a separate Cloudflare Worker
+export const runtime = 'edge';
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
