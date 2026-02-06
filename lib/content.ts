@@ -1,54 +1,58 @@
-import { readFileSync, readdirSync } from "fs";
-import { join } from "path";
+// Import JSON data directly so it gets bundled at build time.
+// This is required for Cloudflare Workers which have no filesystem access.
 import type { Profile, Experience, Education, Project } from "@/types/content";
 
-const dataDir = join(process.cwd(), "data");
+import profileData from "@/data/profile.json";
+import experienceData from "@/data/experience.json";
+import educationData from "@/data/education.json";
+
+// Import all project JSON files explicitly (no dynamic fs.readdirSync)
+import holonStreaming from "@/data/projects/holon-streaming.json";
+import airQualityPredictor from "@/data/projects/air-quality-predictor.json";
+import liveBoatTracking from "@/data/projects/live-boat-tracking.json";
+import fplPlayerPerformance from "@/data/projects/fpl-player-performance.json";
+
+const allProjectsData: Project[] = [
+  holonStreaming as Project,
+  airQualityPredictor as Project,
+  liveBoatTracking as Project,
+  fplPlayerPerformance as Project,
+];
+
+function sortProjects(projects: Project[]): Project[] {
+  return [...projects].sort((a, b) => {
+    // Sort by featured first, then by order, then by title
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+
+    // If both have order, sort by order (lower numbers first)
+    if (a.order !== undefined && b.order !== undefined) {
+      return a.order - b.order;
+    }
+    // If only a has order, it comes first
+    if (a.order !== undefined) return -1;
+    // If only b has order, it comes first
+    if (b.order !== undefined) return 1;
+
+    // Fallback to title sorting
+    return a.title.localeCompare(b.title);
+  });
+}
 
 export function getProfile(): Profile {
-  const filePath = join(dataDir, "profile.json");
-  const fileContents = readFileSync(filePath, "utf8");
-  return JSON.parse(fileContents) as Profile;
+  return profileData as Profile;
 }
 
 export function getExperience(): Experience[] {
-  const filePath = join(dataDir, "experience.json");
-  const fileContents = readFileSync(filePath, "utf8");
-  return JSON.parse(fileContents) as Experience[];
+  return experienceData as Experience[];
 }
 
 export function getEducation(): Education[] {
-  const filePath = join(dataDir, "education.json");
-  const fileContents = readFileSync(filePath, "utf8");
-  return JSON.parse(fileContents) as Education[];
+  return educationData as Education[];
 }
 
 export function getAllProjects(): Project[] {
-  const projectsDir = join(dataDir, "projects");
-  const files = readdirSync(projectsDir).filter((file) => file.endsWith(".json"));
-
-  return files
-    .map((file) => {
-      const filePath = join(projectsDir, file);
-      const fileContents = readFileSync(filePath, "utf8");
-      return JSON.parse(fileContents) as Project;
-    })
-    .sort((a, b) => {
-      // Sort by featured first, then by order, then by title
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-
-      // If both have order, sort by order (lower numbers first)
-      if (a.order !== undefined && b.order !== undefined) {
-        return a.order - b.order;
-      }
-      // If only a has order, it comes first
-      if (a.order !== undefined) return -1;
-      // If only b has order, it comes first
-      if (b.order !== undefined) return 1;
-
-      // Fallback to title sorting
-      return a.title.localeCompare(b.title);
-    });
+  return sortProjects(allProjectsData);
 }
 
 export function getProjectBySlug(slug: string): Project | null {
