@@ -12,6 +12,39 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Helper function to convert hex to HSL format (for Tailwind)
+function hexToHsl(hex: string): string {
+  // Remove # if present
+  hex = hex.replace('#', '');
+  
+  // Parse RGB values
+  const r = parseInt(hex.substring(0, 2), 16) / 255;
+  const g = parseInt(hex.substring(2, 4), 16) / 255;
+  const b = parseInt(hex.substring(4, 6), 16) / 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0, s = 0, l = (max + min) / 2;
+
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+
+  // Convert to percentages and round
+  h = Math.round(h * 360);
+  s = Math.round(s * 100);
+  l = Math.round(l * 100);
+
+  return `${h} ${s}% ${l}%`;
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [themeName, setThemeNameState] = useState<string>(defaultThemeName);
 
@@ -20,6 +53,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme && savedTheme in themes) {
+        console.log("savedTheme", themes);
         setThemeNameState(savedTheme);
       }
     }
@@ -42,6 +76,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         document.documentElement.style.setProperty(key, value);
       });
 
+      // Convert theme background color to HSL and set --background for Tailwind
+      const backgroundHsl = hexToHsl(theme.colors.background);
+      document.documentElement.style.setProperty("--background", backgroundHsl);
+
       // Apply font family
       document.documentElement.style.setProperty(
         "--font-primary",
@@ -53,6 +91,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
+      }
+
+      if (themeName === "black") {
+        document.documentElement.classList.add("black");
+      } else {
+        document.documentElement.classList.remove("black");
       }
 
       // Set glass mode CSS variables based on current theme
@@ -90,6 +134,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         document.documentElement.style.setProperty("--glass-reflex-light", "1");
         document.documentElement.style.setProperty("--saturation", "150%");
       }
+
     }
   }, [theme, cssVariables, themeName]);
 

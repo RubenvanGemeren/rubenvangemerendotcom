@@ -1,10 +1,10 @@
-export const darkTheme = {
-  name: "dark",
-  displayName: "Dark",
+export const blackTheme = {
+  name: "black",
+  displayName: "Black",
 
   font: {
     family: {
-      primary: "Inter",
+      primary: "Space Mono",
       fallback: "system-ui, -apple-system, sans-serif",
     },
     sizes: {
@@ -27,19 +27,19 @@ export const darkTheme = {
   },
 
   colors: {
-    primary: "#e5e5e5",      // Light gray (near white)
-    secondary: "#a3a3a3",    // Medium gray
-    accent: "#737373",       // Dark gray
-    background: "#0a0a0a",   // Near black
-    surface: "#1a1a1a",      // Dark gray (lighter than background)
+    primary: "#292f2f",      // Lighter teal for dark mode
+    secondary: "#3a3b39",    // Lighter blue
+    accent: "#9fa49c",       // Lighter orange
+    background: "#1c1c1c",   // Gray tint
+    surface: "#43494f",      // Gray-700 (lighter than background)
     text: {
-      primary: "#ffffff",    // Pure white
-      secondary: "#d4d4d4",  // Light gray
-      subtle: "#737373",     // Medium gray
+      primary: "#9fa49c",    // Gray-50
+      secondary: "#96a88b",  // Gray-300
+      subtle: "#abbf9e",     // Gray-400
     },
     border: {
-      default: "rgba(115, 115, 115, 0.3)",
-      strong: "rgba(115, 115, 115, 0.5)",
+      default: "rgba(64, 128, 128, 0.3)",
+      strong: "rgba(64, 128, 128, 0.5)",
     },
   },
 
@@ -65,15 +65,15 @@ export const darkTheme = {
 
   components: {
     header: {
-      background: "rgba(10, 10, 10, 0.8)", // background with opacity
-      borderColor: "rgba(115, 115, 115, 0.3)",
+      background: "rgba(31, 41, 55, 0.8)", // background with opacity
+      borderColor: "rgba(64, 128, 128, 0.3)",
       backdropBlur: true,
       sticky: true,
       height: "4rem",
     },
 
     card: {
-      background: "#1a1a1a", // surface
+      background: "#43494f", // surface
       borderRadius: "1rem",
       padding: {
         sm: "1rem",
@@ -85,8 +85,8 @@ export const darkTheme = {
     },
 
     tag: {
-      background: "rgba(229, 229, 229, 0.2)", // primary/20 for better contrast
-      textColor: "#e5e5e5", // primary
+      background: "rgba(91, 163, 163, 0.2)", // primary/20 for better contrast
+      textColor: "#1c1c1c", // primary
       borderRadius: "9999px",
       padding: {
         x: "0.625rem",
@@ -105,23 +105,23 @@ export const darkTheme = {
       fontSize: "0.875rem",
       fontWeight: 500,
       active: {
-        background: "rgba(229, 229, 229, 0.2)", // primary/20
-        textColor: "#e5e5e5", // primary
+        background: "rgba(91, 163, 163, 0.2)", // primary/20
+        textColor: "#1c1c1c", // primary
       },
       inactive: {
-        textColor: "#d4d4d4", // text.secondary
-        hoverBackground: "#1a1a1a", // surface
-        hoverTextColor: "#ffffff", // text.primary
+        textColor: "#96a88b", // text.secondary
+        hoverBackground: "#43494f", // surface
+        hoverTextColor: "#9fa49c", // text.primary
       },
     },
 
     chart: {
-      colors: ["#e5e5e5", "#a3a3a3", "#737373", "#525252", "#404040"],
-      axisColor: "#d4d4d4", // text.secondary
+      colors: ["#5ba3a3", "#6ba3e2", "#fb923c", "#7c3aed", "#10b981"],
+      axisColor: "#96a88b", // text.secondary
       axisFontSize: "0.75rem",
       tooltip: {
-        background: "#1a1a1a", // surface
-        borderColor: "#0a0a0a", // background
+        background: "#43494f", // surface
+        borderColor: "#3a3b39", // background
         borderRadius: "0.5rem",
         fontSize: "0.75rem",
       },
@@ -129,15 +129,15 @@ export const darkTheme = {
     },
 
     footer: {
-      borderColor: "rgba(115, 115, 115, 0.3)",
-      textColor: "#d4d4d4", // text.secondary
-      linkHoverColor: "#e5e5e5", // primary
+      borderColor: "rgba(64, 128, 128, 0.3)",
+      textColor: "#96a88b", // text.secondary
+      linkHoverColor: "#1c1c1c", // primary
     },
 
     themeSelector: {
-      background: "#1a1a1a", // surface
-      textColor: "#ffffff", // text.primary
-      borderColor: "rgba(115, 115, 115, 0.3)", // border.default
+      background: "#43494f", // surface
+      textColor: "#9fa49c", // text.primary
+      borderColor: "rgba(1c1c1c, 0.3)", // border.default
       borderRadius: "0.5rem", // button
       padding: {
         x: "0.75rem", // 12px
@@ -146,18 +146,18 @@ export const darkTheme = {
       fontSize: "0.875rem", // sm
       fontWeight: 500, // medium
       fontFamily: "Inter, system-ui, -apple-system, sans-serif",
-      arrowColor: "#d4d4d4", // text.secondary
+      arrowColor: "#96a88b", // text.secondary
       hover: {
-        borderColor: "#e5e5e5", // primary
+        borderColor: "#1c1c1c", // primary
       },
       focus: {
-        borderColor: "#e5e5e5", // primary
-        ringColor: "rgba(229, 229, 229, 0.2)", // primary/20
+        borderColor: "#1c1c1c", // primary
+        ringColor: "rgba(1c1c1c, 0.2)", // primary/20
       },
       option: {
-        background: "#1a1a1a", // surface
-        textColor: "#ffffff", // text.primary
-        hoverBackground: "rgba(229, 229, 229, 0.2)", // primary/20
+        background: "#43494f", // surface
+        textColor: "#9fa49c", // text.primary
+        hoverBackground: "rgba(1c1c1c, 0.2)", // primary/20
       },
     },
 
@@ -166,29 +166,29 @@ export const darkTheme = {
         fontSize: "2.25rem",
         fontWeight: 700,
         lineHeight: 1.2,
-        color: "#ffffff", // text.primary
+        color: "#9fa49c", // text.primary
       },
       h2: {
         fontSize: "1.875rem",
         fontWeight: 600,
         lineHeight: 1.3,
-        color: "#ffffff", // text.primary
+        color: "#9fa49c", // text.primary
       },
       h3: {
         fontSize: "1.5rem",
         fontWeight: 600,
         lineHeight: 1.4,
-        color: "#ffffff", // text.primary
+        color: "#9fa49c", // text.primary
       },
       body: {
         fontSize: "1rem",
         lineHeight: 1.6,
-        color: "#ffffff", // text.primary
+        color: "#9fa49c", // text.primary
       },
       bodySecondary: {
         fontSize: "0.875rem",
         lineHeight: 1.5,
-        color: "#d4d4d4", // text.secondary
+        color: "#96a88b", // text.secondary
       },
     },
   },
