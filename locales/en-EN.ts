@@ -1,14 +1,20 @@
 export const enEN = {
   common: {
     name: "Ruben van Gemeren",
+    nickname: "Ruben",
     title: "Full Stack Developer",
-    summary: "Recent graduate from KTH Royal Institute of Technology in Stockholm, Sweden. Specialized in Distributed Systems & Data Processing. Currently working as a Full Stack Developer at Spaux, building a multi-tenant self-service portal for telecom management.",
+    summary: "Specializing in Distributed Systems & Data Processing.",
     nav: {
       home: "Home",
+      home_description: "Home page",
       projects: "Projects",
+      projects_description: "Projects page",
       experience: "Experience",
+      experience_description: "Experience page",
       blog: "Blog",
+      blog_description: "Blog page",
       about: "About",
+      about_description: "About page",
     },
     links: {
       github: "GitHub",

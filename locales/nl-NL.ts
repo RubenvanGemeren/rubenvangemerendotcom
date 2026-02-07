@@ -1,14 +1,20 @@
 export const nlNL = {
   common: {
     name: "Ruben van Gemeren",
+    nickname: "Ruben",
     title: "Full Stack Developer",
-    summary: "Recent afgestudeerde van KTH Royal Institute of Technology in Stockholm, Zweden. Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking. Momenteel werkend als Full Stack Developer bij Spaux.",
+    summary: "Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking.",
     nav: {
       home: "Home",
+      home_description: "Homepagina",
       projects: "Projecten",
+      projects_description: "Projectpagina",
       experience: "Ervaring",
+      experience_description: "Ervaringpagina",
       blog: "Blog",
+      blog_description: "Blogpagina",
       about: "Over",
+      about_description: "Overpagina",
     },
     links: {
       github: "GitHub",
