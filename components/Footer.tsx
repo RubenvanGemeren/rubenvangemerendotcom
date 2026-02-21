@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n-context";
 import type { Profile } from "@/types/content";
+import { ThemeSwitchButton } from "./ThemeSelectorv2";
+import LanguageSelector from "./LanguageSelector";
+import LanguageSelectorV2 from "./LanguageSelectorV2";
 
 interface FooterProps {
   profile: Profile;
@@ -19,6 +22,9 @@ export default function Footer({ profile }: FooterProps) {
             © {new Date().getFullYear()} {t("common.name")}
           </p>
           <div className="flex items-center space-x-6">
+          <ThemeSwitchButton />
+          {/* Language Selector */}
+          <LanguageSelectorV2 />
             {profile.links.github && (
               <Link
                 href={profile.links.github}

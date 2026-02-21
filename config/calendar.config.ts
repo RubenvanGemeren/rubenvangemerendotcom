@@ -95,14 +95,14 @@ export const calendarThemes: Record<string, CalendarTheme> = {
   },
 
   /**
-   * Dark theme - Dark background with bright accent colors
+   * Dark theme - Gray to white gradient
    */
   dark: {
-    level0: '#273344', // Dark background
-    level1: '#0e4429', // Dark green
-    level2: '#006d32', // Medium green
-    level3: '#26a641', // Bright green
-    level4: '#39d353', // Very bright green
+    level0: '#1a1a1a', // Dark gray (no contributions)
+    level1: '#404040', // Dark gray
+    level2: '#737373', // Medium gray
+    level3: '#a3a3a3', // Light gray
+    level4: '#e5e5e5', // Near white (highest contributions)
   },
 
   /**

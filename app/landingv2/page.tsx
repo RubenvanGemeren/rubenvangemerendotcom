@@ -1,8 +1,7 @@
 import Layout from "@/components/Layout";
 import Section from "@/components/Section";
-import HomeContent from "@/components/HomeContent";
-import { getProfile, getFeaturedProjects } from "@/lib/content";
 import LandingContentv2 from "@/components/LandingContentv2";
+import { getProfile, getFeaturedProjects } from "@/lib/content";
 import { read } from "@/app/actions/cookies";
 
 export default async function Home() {
@@ -18,7 +17,6 @@ export default async function Home() {
           featuredProjects={featuredProjects}
           hasSeenIntro={hasSeenIntro}
         />
-        {/* <HomeContent profile={profile} featuredProjects={featuredProjects} /> */}
       </Section>
     </Layout>
   );

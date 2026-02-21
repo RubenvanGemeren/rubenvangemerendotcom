@@ -5,7 +5,7 @@ import { themes } from "@/config/themes";
 import { useI18n } from "@/lib/i18n-context";
 import { useGlassMode } from "@/lib/glass-mode-context";
 
-export default function ThemeSelector() {
+export default function ThemeSwitcher() {
   const { themeName, setTheme, availableThemes, theme } = useTheme();
   const { t } = useI18n();
   const { isGlassModeEnabled } = useGlassMode();
