@@ -24,20 +24,7 @@ export default function LanguageSelector() {
         className={`language-selector appearance-none cursor-pointer transition-colors focus:outline-none ${
           isGlassModeEnabled ? "liquid-glass" : ""
         }`}
-        style={
-          isGlassModeEnabled
-            ? {
-                color: selector.textColor,
-                borderRadius: selector.borderRadius,
-                paddingLeft: selector.padding.x,
-                paddingRight: `calc(${selector.padding.x} + 1.5rem)`,
-                paddingTop: selector.padding.y,
-                paddingBottom: selector.padding.y,
-                fontSize: selector.fontSize,
-                fontWeight: selector.fontWeight,
-                fontFamily: selector.fontFamily,
-              }
-            : {
+        style={{
                 backgroundColor: selector.background,
                 color: selector.textColor,
                 borderColor: selector.borderColor,
