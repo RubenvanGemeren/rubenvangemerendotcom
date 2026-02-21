@@ -4,7 +4,7 @@ import { greenTheme } from "./green";
 import { androidTheme } from "./android";
 import { blackTheme } from "./black";
 // Use a more flexible type that allows different literal values
-export type Theme = typeof defaultTheme | typeof darkTheme | typeof greenTheme | typeof androidTheme;
+export type Theme = typeof defaultTheme | typeof darkTheme | typeof greenTheme | typeof androidTheme | typeof blackTheme;
 
 export const themes = {
   default: defaultTheme,
