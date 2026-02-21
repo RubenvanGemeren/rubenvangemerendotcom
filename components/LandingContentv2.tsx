@@ -126,9 +126,9 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
           className="px-6 md:px-8 mt-4 mb-3"
         >
           <div className="flex gap-4 items-center">
-            <SimpleButtonLink variant="outline" href="/projects" children={t("common.nav.projects")} />
-            <SimpleButtonLink variant="outline" href="/experience" children={t("common.nav.experience")} />
-            <SimpleButtonLink variant="outline" href="/about" children={t("common.nav.about")} />
+            <SimpleButtonLink variant="outline" href="/projects">{t("common.nav.projects")}</SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="/experience">{t("common.nav.experience")}</SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="/about">{t("common.nav.about")}</SimpleButtonLink>
           </div>
         </motion.div>
       )}
