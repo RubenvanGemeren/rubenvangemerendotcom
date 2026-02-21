@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Section from "@/components/Section";
 import ProjectDetailContent from "@/components/ProjectDetailContent";
 import { getProjectBySlug, getAllProjects } from "@/lib/content";
+import HeaderV2 from "@/components/Headerv2";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <Layout>
-      <Section className="py-12 lg:py-16">
+      <HeaderV2 />
+      <Section>
         <ProjectDetailContent project={project} />
       </Section>
     </Layout>
