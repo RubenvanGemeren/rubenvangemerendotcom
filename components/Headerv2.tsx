@@ -28,7 +28,7 @@ export default function HeaderV2() {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Button variant="outline" size="icon">
-            <Link href="/landingv2">
+            <Link href="/">
               <HouseIcon className="w-5 h-5" />
             </Link>
       	  </Button>

@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen flex flex-col relative">
       <AnimatedBlobs />
       {/* <Header /> */}
-      <main className="flex-1 flex flex-col relative z-10">{children}</main>
+      <main className="flex-1 flex flex-col relative z-10 pb-6">{children}</main>
       <Footer profile={profile} />
     </div>
   );
