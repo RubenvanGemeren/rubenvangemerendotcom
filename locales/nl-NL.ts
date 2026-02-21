@@ -4,7 +4,16 @@ export const nlNL = {
     nickname: "Ruben",
     title: "Full Stack Developer",
     summary: "Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking.",
+    intro: {
+      hi: "Ik ben",
+      and: "en ik ben",
+    },
     nav: {
+      languages: {
+        default: "Taal",
+        en: "Engels",
+        nl: "Nederlands",
+      },
       home: "Home",
       home_description: "Homepagina",
       projects: "Projecten",

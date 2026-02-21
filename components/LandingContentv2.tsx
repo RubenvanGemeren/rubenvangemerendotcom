@@ -36,7 +36,7 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
             {showIntro && (
               <TypeWriter
                 sequence={[
-                  `Hi, I'm ${t("common.nickname")}...\nand I'm a ${t("common.title")}\n`,
+                  `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.title")}\n`,
                   1000,
                   () => {
                     // Callback executed when first TypeWriter finishes
@@ -77,12 +77,12 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="mt-6 md:mt-8 mx-6 md:mx-8"
+                className="mt-6 md:mt-8"
               >
                 <div>
                   <TypeWriter
                     sequence={[
-                      `Hi, I'm ${t("common.nickname")}...\nand I'm a ${t("common.title")}\n`,
+                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.title")}\n`,
                       50,
                       () => {
                         // Callback executed when first TypeWriter finishes
@@ -117,7 +117,7 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
         </div>
       </motion.div>
 
-      {/* Middle section: Menu and Theme buttons */}
+      {/* Middle section: Menu */}
       {showButtons && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}

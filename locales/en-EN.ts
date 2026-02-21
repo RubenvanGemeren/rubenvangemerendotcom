@@ -4,7 +4,16 @@ export const enEN = {
     nickname: "Ruben",
     title: "Full Stack Developer",
     summary: "Specializing in Distributed Systems & Data Processing.",
+    intro: {
+      hi: "I'm",
+      and: "and I'm a",
+    },
     nav: {
+      languages: {
+        default: "Language",
+        en: "English",
+        nl: "Dutch",
+      },
       home: "Home",
       home_description: "Home page",
       projects: "Projects",
