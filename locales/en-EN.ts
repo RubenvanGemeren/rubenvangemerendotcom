@@ -14,6 +14,7 @@ export const enEN = {
         en: "English",
         nl: "Dutch",
       },
+      cv: "Cv",
       home: "Home",
       home_description: "Home page",
       projects: "Projects",
