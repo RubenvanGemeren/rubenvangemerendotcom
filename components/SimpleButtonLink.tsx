@@ -3,6 +3,7 @@ import Link from "next/link";
 
 interface SimpleButtonLinkProps {
   href: string;
+  download?: string;
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
@@ -15,6 +16,7 @@ interface SimpleButtonLinkProps {
 
 export function SimpleButtonLink({
   href,
+  download,
   children,
   onClick,
   className,
@@ -26,11 +28,19 @@ export function SimpleButtonLink({
 }: SimpleButtonLinkProps): JSX.Element {
   return (
     <Button variant={variant as "outline" | "default" | "ghost" | "link" | "destructive" | "secondary" | null} size={size as "icon" | "sm" | "lg" | null} aria-label={ariaLabel} className={className} onClick={onClick}>
-      <Link href={href}>
-        {iconPosition === "left" && icon}
-        {children}
-        {iconPosition === "right" && icon}
-      </Link>
+      {download ? (
+        <a href={href} download={download}>
+          {iconPosition === "left" && icon}
+          {children}
+          {iconPosition === "right" && icon}
+        </a>
+      ) : (
+        <Link href={href}>
+          {iconPosition === "left" && icon}
+          {children}
+          {iconPosition === "right" && icon}
+        </Link>
+      )}
     </Button>
   );
 }

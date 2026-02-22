@@ -8,6 +8,9 @@ import { TypeWriter } from "./TypeWriter";
 import { useState } from "react";
 import { SimpleButtonLink } from "./SimpleButtonLink";
 import { create } from "@/app/actions/cookies";
+import {
+  DownloadIcon
+} from "lucide-react";
 
 interface LandingContentv2Props {
   profile: Profile;
@@ -129,6 +132,10 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
             <SimpleButtonLink variant="outline" href="/projects">{t("common.nav.projects")}</SimpleButtonLink>
             <SimpleButtonLink variant="outline" href="/experience">{t("common.nav.experience")}</SimpleButtonLink>
             <SimpleButtonLink variant="outline" href="/about">{t("common.nav.about")}</SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="data/cv_ruben_van_gemeren_feb_26.pdf" download="cv_ruben_van_gemeren_feb_26.pdf">
+              {t("common.nav.cv")}
+              <DownloadIcon className="w-2 h-2 ml-2 inline-block" />
+            </SimpleButtonLink>
           </div>
         </motion.div>
       )}

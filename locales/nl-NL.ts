@@ -14,6 +14,7 @@ export const nlNL = {
         en: "Engels",
         nl: "Nederlands",
       },
+      cv: "Cv",
       home: "Home",
       home_description: "Homepagina",
       projects: "Projecten",
