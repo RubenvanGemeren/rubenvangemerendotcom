@@ -92,14 +92,7 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
                 <div>
                   <TypeWriter
                     sequence={[
-                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle")}\n`,
-                      1000,
-                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle2")}\n`,
-                      1000,
-                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle3")}\n`,
-                      1000,
                       `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.title")}\n`,
-                      1000,
                       50,
                       () => {
                         // Callback executed when first TypeWriter finishes
