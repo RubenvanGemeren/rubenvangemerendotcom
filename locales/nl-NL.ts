@@ -5,7 +5,7 @@ export const nlNL = {
     title: "Full Stack Developer",
     alternateTitle: "Software Engineer",
     alternateTitle2: "IPA enjoyer",
-    alternateTitle3: "Exessive Opus user",
+    alternateTitle3: "Excessive Opus user",
     summary: "Gespecialiseerd in Gedistribueerde Systemen & Gegevensverwerking.",
     intro: {
       hi: "Ik ben",

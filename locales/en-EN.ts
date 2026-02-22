@@ -5,7 +5,7 @@ export const enEN = {
     title: "Full Stack Developer",
     alternateTitle: "Software Engineer",
     alternateTitle2: "IPA enjoyer",
-    alternateTitle3: "Exessive Opus user",
+    alternateTitle3: "Excessive Opus user",
     summary: "Specializing in Distributed Systems & Data Processing.",
     intro: {
       hi: "I'm",
