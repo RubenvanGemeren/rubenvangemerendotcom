@@ -8,6 +8,8 @@
   "impact": "Create a webpage that displays the predicted performance of FPL players, with a live update every week. Based on real game data, the model can be updated to predict the performance of FPL players more accurately.",
   "techStack": ["Python", "PyTorch", "Hopsworks"],
   "featured": false,
+  "highlight": false,
+  "highlight_color":"#6A3CBC",
   "order": 4
 }
 

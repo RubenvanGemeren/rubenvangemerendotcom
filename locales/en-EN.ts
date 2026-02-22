@@ -325,6 +325,7 @@ export const enEN = {
     projectCard: {
       challenge: "Challenge",
       impact: "Impact",
+      highlighted: "This project is actively being worked on",
     },
     projectDetail: {
       challenge: "Challenge",

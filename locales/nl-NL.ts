@@ -325,6 +325,7 @@ export const nlNL = {
     projectCard: {
       challenge: "Uitdaging",
       impact: "Impact",
+      highlighted: "Dit project is actief",
     },
     projectDetail: {
       challenge: "Uitdaging",

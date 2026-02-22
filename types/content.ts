@@ -53,6 +53,8 @@ export interface Project {
   metrics?: ProjectMetrics;
   chartData?: ChartDataPoint[];
   featured?: boolean;
+  highlight?: boolean;
+  highlight_color?: string;
   order?: number;
 }
 

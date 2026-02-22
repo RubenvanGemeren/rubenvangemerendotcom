@@ -18,6 +18,8 @@
     { "label": "Flink", "value": 4890 }
   ],
   "featured": true,
+  "highlight": true,
+  "highlight_color":"#08CB00",
   "order": 1
 }
 
