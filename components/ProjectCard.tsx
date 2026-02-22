@@ -7,6 +7,7 @@ import MetricChart from "./MetricChart";
 import type { Project } from "@/types/content";
 import { useI18n } from "@/lib/i18n-context";
 import { useTranslatedProject } from "@/lib/use-translated-data";
+import { BasicTooltip } from "./BasicTooltip";
 
 interface ProjectCardProps {
   project: Project;
@@ -23,7 +24,13 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
         <div className="flex flex-col h-full">
           <div className="flex items-start justify-between mb-2 md:mb-3">
             <div className="flex-1">
-              <h3 className="text-base md:text-lg font-semibold text-text mb-1">{translatedProject.title}</h3>
+              <h3 className="text-base md:text-lg font-semibold text-text mb-1">
+                {translatedProject.title}
+                <BasicTooltip content={t("components.projectCard.highlighted")}>
+                  <span style={{ color: project.highlight_color }} className="text-xl">{translatedProject.highlight ? " * " : ""}</span>
+                </BasicTooltip>
+
+              </h3>
               <p className="text-sm text-text-subtle">{translatedProject.subtitle}</p>
             </div>
           </div>

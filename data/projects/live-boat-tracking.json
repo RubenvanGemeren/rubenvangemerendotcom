@@ -8,6 +8,8 @@
   "impact": "Giving passengers up to date information about their journey, on multiple screens, with arrival time estimates and live updates.",
   "techStack": ["Laravel", "Pub-Sub", "NeTEx"],
   "featured": true,
+  "highlight": false,
+  "highlight_color":"#6A3CBC",
   "order": 3
 }
 

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useTheme } from "@/lib/theme-context";
 import { useMemo } from "react";
 import { getThemeColors, mergeSettings, roundedCalendarSettings, defaultCalendarSettings, type CalendarSettings } from "@/config/calendar.config";
+import { GradientText } from "./ui/gradient-text";
 
 // Dynamically import GitHubCalendar to avoid SSR issues with browser globals
 // Loading state is handled by the component itself
@@ -223,7 +224,7 @@ export default function GitHubActivity({
             href={seeMoreHref}
             className="text-primary hover:text-primary/80 font-medium transition-colors text-sm"
           >
-            {seeMoreText}
+            <GradientText colors={["#52dbbd", "#303a50", "#276d6c"]} animateOnHover>{seeMoreText}</GradientText>
           </a>
         </div>
       )}

@@ -11,6 +11,7 @@ import { create } from "@/app/actions/cookies";
 import {
   DownloadIcon
 } from "lucide-react";
+import { GradientText } from "./ui/gradient-text";
 
 interface LandingContentv2Props {
   profile: Profile;
@@ -39,6 +40,12 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
             {showIntro && (
               <TypeWriter
                 sequence={[
+                  `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle")}\n`,
+                  1000,
+                  `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle2")}\n`,
+                  1000,
+                  `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle3")}\n`,
+                  1000,
                   `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.title")}\n`,
                   1000,
                   () => {
@@ -85,7 +92,14 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
                 <div>
                   <TypeWriter
                     sequence={[
+                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle")}\n`,
+                      1000,
+                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle2")}\n`,
+                      1000,
+                      `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.alternateTitle3")}\n`,
+                      1000,
                       `Hi, ${t("common.intro.hi")} ${t("common.nickname")}...\n${t("common.intro.and")} ${t("common.title")}\n`,
+                      1000,
                       50,
                       () => {
                         // Callback executed when first TypeWriter finishes
@@ -129,13 +143,10 @@ export default function LandingContentv2({ profile, hasSeenIntro }: LandingConte
           className="px-6 md:px-8 mt-4 mb-3"
         >
           <div className="flex gap-4 items-center">
-            <SimpleButtonLink variant="outline" href="/projects">{t("common.nav.projects")}</SimpleButtonLink>
-            <SimpleButtonLink variant="outline" href="/experience">{t("common.nav.experience")}</SimpleButtonLink>
-            <SimpleButtonLink variant="outline" href="/about">{t("common.nav.about")}</SimpleButtonLink>
-            <SimpleButtonLink variant="outline" href="data/cv_ruben_van_gemeren_feb_26.pdf" download="cv_ruben_van_gemeren_feb_26.pdf">
-              {t("common.nav.cv")}
-              <DownloadIcon className="w-2 h-2 ml-2 inline-block" />
-            </SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="/projects"><GradientText colors={["#ffaa40", "#9c40ff", "#ffaa40"]} animateOnHover>{t("common.nav.projects")}</GradientText></SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="/experience"><GradientText colors={["#3A9AFF", "#1C0770", "#F1FF5E"]} animateOnHover>{t("common.nav.experience")}</GradientText></SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="/about"><GradientText colors={["#A8DF8E", "#F0FFDF", "#FFAAB8"]} animateOnHover>{t("common.nav.about")}</GradientText></SimpleButtonLink>
+            <SimpleButtonLink variant="outline" href="data/cv_ruben_van_gemeren_feb_26.pdf" download="cv_ruben_van_gemeren_feb_26.pdf"><GradientText colors={["#FFC50F", "#5B532C", "#FDE7B3"]} animateOnHover>{t("common.nav.cv")}</GradientText></SimpleButtonLink>
           </div>
         </motion.div>
       )}

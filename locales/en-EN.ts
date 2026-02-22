@@ -3,6 +3,9 @@ export const enEN = {
     name: "Ruben van Gemeren",
     nickname: "Ruben",
     title: "Full Stack Developer",
+    alternateTitle: "Software Engineer",
+    alternateTitle2: "IPA enjoyer",
+    alternateTitle3: "Exessive Opus user",
     summary: "Specializing in Distributed Systems & Data Processing.",
     intro: {
       hi: "I'm",
@@ -14,7 +17,7 @@ export const enEN = {
         en: "English",
         nl: "Dutch",
       },
-      cv: "Cv",
+      cv: "CV",
       home: "Home",
       home_description: "Home page",
       projects: "Projects",
@@ -325,6 +328,7 @@ export const enEN = {
     projectCard: {
       challenge: "Challenge",
       impact: "Impact",
+      highlighted: "This project is actively being worked on",
     },
     projectDetail: {
       challenge: "Challenge",
