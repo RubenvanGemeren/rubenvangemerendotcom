@@ -6,6 +6,7 @@ import type { Profile } from "@/types/content";
 import { ThemeSwitchButton } from "./ThemeSelectorv2";
 import LanguageSelector from "./LanguageSelector";
 import LanguageSelectorV2 from "./LanguageSelectorV2";
+import { GradientText } from "./ui/gradient-text";
 
 interface FooterProps {
   profile: Profile;
@@ -32,7 +33,7 @@ export default function Footer({ profile }: FooterProps) {
                 rel="noopener noreferrer"
                 className="text-sm text-text-subtle hover:text-primary transition-colors"
               >
-                {t("common.links.github")}
+                <GradientText colors={["#52dbbd", "#303a50", "#276d6c"]} animateOnHover>{t("common.links.github")}</GradientText>
               </Link>
             )}
             {profile.links.linkedin && (
@@ -42,7 +43,7 @@ export default function Footer({ profile }: FooterProps) {
                 rel="noopener noreferrer"
                 className="text-sm text-text-subtle hover:text-primary transition-colors"
               >
-                {t("common.links.linkedin")}
+                <GradientText colors={["#0077b5", "#86888a", "#0abab5"]} animateOnHover>{t("common.links.linkedin")}</GradientText>
               </Link>
             )}
           </div>
